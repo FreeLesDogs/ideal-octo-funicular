@@ -36,11 +36,8 @@ jeu.o: jeu.c deplacements.h afficher.h listes_memo.h
 editeur.o: editeur.c mes_types.h afficher.h
 	gcc -c -Wall `sdl-config --cflags` editeur.c
 
-indent:
-	indent *.c
-
 editeur:
-	geany Makefile *.c *.h
+	geany Makefile *.c mes_types.h&
 
 # Pour creer le zip a deposer sur e-campus
 zip:

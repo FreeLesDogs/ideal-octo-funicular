@@ -13,8 +13,8 @@ SLIDER
 lire_position (FILE * fichier, SLIDER S)
 {
   fscanf (fichier, "%d %d ", &S.x, &S.y);
-  S.ps.x = S.x * Taille_Case + (Taille_Case / 2);
-  S.ps.y = S.y * Taille_Case + (Taille_Case / 2);
+  S.ps.x = S.x * TAILLE_CASE + (TAILLE_CASE / 2);
+  S.ps.y = S.y * TAILLE_CASE + (TAILLE_CASE / 2);
   return S;
 }
 

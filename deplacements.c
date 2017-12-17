@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <uvsqgraphics.h>
 #include "mes_types.h"
 #include "jeu.h"
 #include "afficher.h"
@@ -12,16 +11,16 @@
 int
 mur_verticalG (SLIDER S)	// Retourne la postion à gauche du mur le plus proche à gauche du slider
 {
-  int a, tmp, n;
+  int a, tmp, i;
   a = tmp = -1;
-  for (n = 0; n < S.N; n++) 
+  for (i=0;i<S.N;i++) 
     {
-      if (S.mury[n] == S.y && S.murx[n] == S.x && S.murz[n] == 9)
+      if (S.mury[i] == S.y && S.murx[i] == S.x && S.murz[i] == 9)
 	return S.x;
-      if (S.mury[n] == S.y && S.murx[n] < S.x && S.murz[n] == 9)
-	tmp = S.murx[n];
-      if (S.mury[n] == S.y && S.murx[n] < S.x && S.murz[n] == 3)
-	tmp = S.murx[n] + 1;
+      if (S.mury[i] == S.y && S.murx[i] < S.x && S.murz[i] == 9)
+	tmp = S.murx[i];
+      if (S.mury[i] == S.y && S.murx[i] < S.x && S.murz[i] == 3)
+	tmp = S.murx[i] + 1;
       if (tmp > a)
 	a = tmp;
     }
@@ -93,8 +92,7 @@ mur_horizontalB (SLIDER S) 	// retourne la position du slider en dessous du mur 
   return a;
 }
 
-SLIDER
-avance_droite (SLIDER S)
+SLIDER avance_droite (SLIDER S)
 {
   int a, i;
   a = mur_verticalD (S);
@@ -105,12 +103,12 @@ avance_droite (SLIDER S)
     }
    S.x = a;
     printf("a= %d",a);
-  a = a * Taille_Case + (Taille_Case / 2);
-  for (i = S.ps.x; i < a; i += Taille_Case)
+  a = a * TAILLE_CASE + (TAILLE_CASE / 2);
+  for (i = S.ps.x; i < a; i += TAILLE_CASE)
     {
-      attendre (10);
+      //attendre (10);
       effacer_le_slider (S);
-      S.ps.x += Taille_Case;
+      S.ps.x += TAILLE_CASE;
       afficher_le_slider (S);
     }
 
@@ -127,12 +125,12 @@ avance_gauche (SLIDER S)
       a = S.sx;
     }
    S.x = a;
-  a = a * Taille_Case + (Taille_Case / 2);
-  for (i = S.ps.x; i > a; i -= Taille_Case)
+  a = a * TAILLE_CASE + (TAILLE_CASE / 2);
+  for (i = S.ps.x; i > a; i -= TAILLE_CASE)
     {
       attendre (10);
       effacer_le_slider (S);
-      S.ps.x -= Taille_Case;
+      S.ps.x -= TAILLE_CASE;
       afficher_le_slider (S);
     }
   return S;
@@ -148,12 +146,12 @@ avance_haut (SLIDER S)
       a = S.sy;
     }
   S.y = a;
-  a = a * Taille_Case + (Taille_Case / 2);
-  for (i = S.ps.y; i < a; i += Taille_Case)
+  a = a * TAILLE_CASE + (TAILLE_CASE / 2);
+  for (i = S.ps.y; i < a; i += TAILLE_CASE)
     {
       attendre (10);
       effacer_le_slider (S);
-      S.ps.y += Taille_Case;
+      S.ps.y += TAILLE_CASE;
       afficher_le_slider (S);
     }
 
@@ -170,12 +168,12 @@ avance_bas (SLIDER S)
       a = S.sy;
     }
     S.y = a;
-  a = a * Taille_Case + (Taille_Case / 2);
-  for (i = S.ps.y; i > a; i -= Taille_Case)
+  a = a * TAILLE_CASE + (TAILLE_CASE / 2);
+  for (i = S.ps.y; i > a; i -= TAILLE_CASE)
     {
       attendre (10);
       effacer_le_slider (S);
-      S.ps.y -= Taille_Case;
+      S.ps.y -= TAILLE_CASE;
       afficher_le_slider (S);
     }
   return S;

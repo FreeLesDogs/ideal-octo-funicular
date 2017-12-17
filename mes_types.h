@@ -1,5 +1,5 @@
-#include <uvsqgraphics.h>
-#define Taille_Case 50
+#include "graphics.h"
+#define TAILLE_CASE 50
 
 
 struct slider {

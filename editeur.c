@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <uvsqgraphics.h>
 #include "mes_types.h"
 #include "afficher.h"
 
@@ -10,7 +9,7 @@ SLIDER ecrire_taille_init(FILE * f,int L,int H,SLIDER S)
 	fprintf(f,"%d %d \n",L,H);
 	S.L=L; S.H=H;
 	initialiser_affichage(S);
-	afficher_grille(S);
+	afficher_quadrillage(S);
 	return S;
 }
 SLIDER ecrire_position_sortie(FILE * f,SLIDER S)
@@ -21,8 +20,8 @@ SLIDER ecrire_position_sortie(FILE * f,SLIDER S)
 	a = wait_key_arrow_clic (&c, &fl, &p);
     SDL_EnableKeyRepeat (0, SDL_DEFAULT_REPEAT_INTERVAL);
 	}
-	S.sx=p.x/Taille_Case;
-	S.sy=p.y/Taille_Case;
+	S.sx=p.x/TAILLE_CASE;
+	S.sy=p.y/TAILLE_CASE;
 	afficher_sortie(S);
 	fprintf(f,"%d %d \n",S.sx,S.sy);
 	
@@ -37,9 +36,9 @@ SLIDER ecrire_position_slider(FILE * f,SLIDER S)
 	a = wait_key_arrow_clic (&c, &fl, &p);
     SDL_EnableKeyRepeat (0, SDL_DEFAULT_REPEAT_INTERVAL);
 	}
-	S.x=p.x/Taille_Case;
-	S.y=p.y/Taille_Case;
-	S.ps.x=((S.x)*Taille_Case)+(Taille_Case/2); S.ps.y=((S.y)*Taille_Case)+(Taille_Case/2);
+	S.x=p.x/TAILLE_CASE;
+	S.y=p.y/TAILLE_CASE;
+	S.ps.x=((S.x)*TAILLE_CASE)+(TAILLE_CASE/2); S.ps.y=((S.y)*TAILLE_CASE)+(TAILLE_CASE/2);
 	afficher_le_slider(S);
 	fprintf(f,"%d %d \n",S.x,S.y);
 	return S;
@@ -75,7 +74,7 @@ void dessine_un_mur(SLIDER S,int n)
 
 SLIDER place_mur(FILE * f, int fl,POINT p,int n, SLIDER S)
 {
-	S.murx[n]=p.x/Taille_Case; S.mury[n]=p.y/Taille_Case;
+	S.murx[n]=p.x/TAILLE_CASE; S.mury[n]=p.y/TAILLE_CASE;
 	if (fl==FLECHE_HAUTE) S.murz[n]=0;
 	if (fl==FLECHE_DROITE) S.murz[n]=3;
 	if (fl==FLECHE_BAS) S.murz[n]=6;
