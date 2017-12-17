@@ -24,7 +24,7 @@ main (int argc, char *argv[])
 
   SLIDER S;
   LISTE l = NULL;
-  S = init_slider (argv[1]);
+  S = init_slider (argv[1],S);
   afficher_slider(S);
   l = bouge (S, l);
   finir_affichage (S);

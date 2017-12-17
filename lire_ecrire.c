@@ -2,68 +2,56 @@
 #include <stdlib.h>
 #include "mes_types.h"
 
-SLIDER
-lire_taille (FILE * fichier, SLIDER S)
-{
-  fscanf (fichier, "%d %d ", &S.L, &S.H);
-  return S;
+/*void erreurs_arguments(FILE * fichier,SLIDER S){
+	fseek(fichier,12,SEEK_SET);
+	fscanf(fichier,"%d",S.N);
+}*/
+
+SLIDER lire_fichier(FILE * fichier, SLIDER S){
+	
+	
+	fscanf (fichier,"%d %d %d %d %d %d ",&S.L,&S.H,&S.x,&S.y,&S.sx,&S.sy);
+	return S;
+	
 }
 
-SLIDER
-lire_position (FILE * fichier, SLIDER S)
-{
-  fscanf (fichier, "%d %d ", &S.x, &S.y);
-  S.ps.x = S.x * TAILLE_CASE + (TAILLE_CASE / 2);
-  S.ps.y = S.y * TAILLE_CASE + (TAILLE_CASE / 2);
-  return S;
-}
-
-SLIDER
-lire_sortie (FILE * fichier, SLIDER S)
-{
-  fscanf (fichier, "%d %d ", &S.sx, &S.sy);
-  return S;
-}
-
-SLIDER
-lire_murs (FILE * fichier, SLIDER S)
-{
-  fscanf (fichier, "%d ", &S.N);
-  S.murx = malloc ((S.N) * sizeof (int));
-  S.mury = malloc ((S.N) * sizeof (int));
-  S.murz = malloc ((S.N) * sizeof (int));
-  printf ("N= %d \n", S.N);
-  int n = 0;
-  while (n != S.N)
+SLIDER lire_murs (FILE * fichier, SLIDER S){
+	int i;
+	//fseek();
+	fscanf (fichier,"%d",&S.N);
+	S.murx=malloc(S.N*sizeof(int));
+	S.mury=malloc(S.N*sizeof(int));
+	S.murz=malloc(S.N*sizeof(int));
+	printf ("N= %d \n", S.N);
+	for(i=0;i<S.N;i++)
     {
-      fscanf (fichier, "%d %d %d", &S.murx[n], &S.mury[n], &S.murz[n]);
-      printf ("%d %d %d \n", S.murx[n], S.mury[n], S.murz[n]);
-      n++;
-    }
+		fscanf(fichier,"%d %d %d",&S.murx[i],&S.mury[i],&S.murz[i]);
+		printf("%d %d %d\n",S.murx[i],S.mury[i],S.murz[i]);
+	}
 
-  return S;
+	return S;
 }
 
-
-
-SLIDER
-init_slider (char *nom)
-{
-
-  FILE *fichier = NULL;
-  fichier = fopen (nom, "r");
-  //printf("nom = %s\n",nom);
-  SLIDER S;
-  S = lire_taille (fichier, S);
-  S = lire_position (fichier, S);
-  S = lire_sortie (fichier, S);
-  S = lire_murs (fichier, S);
-  fclose (fichier);
-  return S;
+SLIDER init_position_sortie(SLIDER S){
+	
+	S.ps.x=S.x*TAILLE_CASE+25;
+	S.ps.y=S.y*TAILLE_CASE+25;
+	return S;
+	
 }
 
+SLIDER init_slider (char *nom,SLIDER S){
+	
+	FILE *fichier = NULL;
+	fichier = fopen (nom, "r");
+	S = lire_fichier(fichier, S);
+	S = init_position_sortie(S);
+	S = lire_murs (fichier, S);
+	fclose (fichier);
+	return S;
+	
+}
 
-void
-ecrire_fichier (SLIDER S, char *nom)
+void ecrire_fichier (SLIDER S, char *nom)
 {
 }
