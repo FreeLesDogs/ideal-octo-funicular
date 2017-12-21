@@ -8,8 +8,8 @@ int sortie(SLIDER S)
 {
 	S.sx = S.sx * TAILLE_CASE + (TAILLE_CASE / 2);
     S.sy = S.sy * TAILLE_CASE + (TAILLE_CASE / 2);
-	if (S.ps.x ==S.sx && S.ps.y ==S.sy) return 0;
-	return 1;
+	if (S.ps.x ==S.sx && S.ps.y ==S.sy) return 1;
+	return 0;
 }
 
 
@@ -19,18 +19,17 @@ bouge (SLIDER S, LISTE l)
   char c;
   int a,f;
   POINT p;
-  l = ajout (l, S);
-  while (sortie(S))
+  l=ajout(l,S);
+  while (!sortie(S))
     {
-      a = wait_key_arrow_clic (&c, &f, &p);
-      SDL_EnableKeyRepeat (0, SDL_DEFAULT_REPEAT_INTERVAL);
+      a = wait_key_arrow_clic (&c,&f,&p);
       S.x=(S.ps.x-(TAILLE_CASE/2)) /TAILLE_CASE;
       S.y=(S.ps.y-(TAILLE_CASE/2)) /TAILLE_CASE;
 
       if (a == EST_FLECHE)
 	{
 	  S = deplace (f, S);
-	  l = ajout (l, S);
+	  l = ajout(l,S);
 	}
       if (a == EST_TOUCHE)
       {

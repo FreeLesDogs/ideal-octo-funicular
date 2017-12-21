@@ -21,9 +21,9 @@ mur_verticalG (SLIDER S)	// Retourne la postion à gauche du mur le plus proche 
       if (tmp > a)
 	a=tmp;
     }
-  /*if (a == -1)
+  if (a == -1)
     a = 0;
-  */return a;
+  return a;
 }
 
 int
