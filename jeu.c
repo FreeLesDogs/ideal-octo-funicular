@@ -4,6 +4,8 @@
 #include "afficher.h"
 #include "deplacements.h"
 #include "listes_memo.h"
+
+
 int sortie(SLIDER S)
 {
 	S.sx = S.sx * TAILLE_CASE + (TAILLE_CASE / 2);

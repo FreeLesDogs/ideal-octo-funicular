@@ -1,17 +1,28 @@
 #include "graphics.h"
 #define TAILLE_CASE 50
 
+struct double_point
+{
+	POINT p1,p2;
+};
+typedef struct double_point POINT_D;
+
+struct mur
+{
+	int *murx;
+	int *mury;
+	int *type;
+};
+typedef struct mur MUR;
 
 struct slider {
-	int L,H;	 	// Largeur et hauteur de la grille
-	int x,y; 	   // Position du slider en nombre de case
-	POINT ps;	  // Position du slider en coordonnées
-	int sx,sy;   // Position sortie
+	int L,H;	// Largeur et hauteur de la grille
+	int x,y;	// Position du slider en nombre de case
+	POINT ps;	// Position du slider en coordonnées
+	int sx,sy; 	// Position sortie
 	int N; 		// Nombre de murs
-	int *murx; // Position en x des murs
-	int *mury; // Position en y des murs
-	int *murz; // Direction des murs
-	int coups; // Nombre de coups
+	MUR m;		//on utilise la structure mur
+	int coups; 	// Nombre de coups
 };
 typedef struct slider SLIDER;
 

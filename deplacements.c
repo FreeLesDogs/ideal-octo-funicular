@@ -12,12 +12,12 @@ mur_verticalG (SLIDER S)	// Retourne la postion à gauche du mur le plus proche 
   a = tmp = -1;
   for (i=0;i<S.N;i++) 
     {
-      if (S.mury[i]==S.y&&S.murx[i]==S.x&&S.murz[i]==9)
+      if (S.m.mury[i]==S.y&&S.m.murx[i]==S.x&&S.m.type[i]==9)
 	return S.x;
-      if (S.mury[i]==S.y&&S.murx[i]<S.x&&S.murz[i]==9)
-	tmp=S.murx[i];
-      if(S.mury[i]==S.y && S.murx[i]<S.x&&S.murz[i]==3)
-	tmp = S.murx[i] + 1;
+      if (S.m.mury[i]==S.y&&S.m.murx[i]<S.x&&S.m.type[i]==9)
+	tmp=S.m.murx[i];
+      if(S.m.mury[i]==S.y && S.m.murx[i]<S.x&&S.m.type[i]==3)
+	tmp = S.m.murx[i] + 1;
       if (tmp > a)
 	a=tmp;
     }
@@ -33,12 +33,12 @@ mur_verticalD (SLIDER S) // Retourne la postion à droite du mur le plus proche 
   a = tmp = S.L + 1;
   for (n = 0; n < S.N; n++)
     {
-      if (S.mury[n] == S.y && S.murx[n] == S.x && S.murz[n] == 3)
+      if (S.m.mury[n] == S.y && S.m.murx[n] == S.x && S.m.type[n] == 3)
 	return S.x;
-      if (S.mury[n] == S.y && S.murx[n] > S.x && S.murz[n] == 9)
-	tmp = S.murx[n] - 1;
-      if (S.mury[n] == S.y && S.murx[n] > S.x && S.murz[n] == 3)
-	tmp = S.murx[n];
+      if (S.m.mury[n] == S.y && S.m.murx[n] > S.x && S.m.type[n] == 9)
+	tmp = S.m.murx[n] - 1;
+      if (S.m.mury[n] == S.y && S.m.murx[n] > S.x && S.m.type[n] == 3)
+	tmp = S.m.murx[n];
       if (tmp < a)
 	a = tmp;
       if (a == S.L + 1)
@@ -54,12 +54,12 @@ mur_horizontalH (SLIDER S)	// retourne la position du slider au dessus du mur le
   a = tmp = S.H + 1;
   for (n = 0; n < S.N; n++)
     {
-      if (S.mury[n] == S.y && S.murx[n] == S.x && S.murz[n] == 0)
+      if (S.m.mury[n] == S.y && S.m.murx[n] == S.x && S.m.type[n] == 0)
 	return S.y;
-      if (S.murx[n] == S.x && S.mury[n] > S.y && S.murz[n] == 0)
-	tmp = S.mury[n];
-      if (S.murx[n] == S.x && S.mury[n] > S.y && S.murz[n] == 6)
-	tmp = S.mury[n] + 1;
+      if (S.m.murx[n] == S.x && S.m.mury[n] > S.y && S.m.type[n] == 0)
+	tmp = S.m.mury[n];
+      if (S.m.murx[n] == S.x && S.m.mury[n] > S.y && S.m.type[n] == 6)
+	tmp = S.m.mury[n] + 1;
       if (tmp > a)
 	a = tmp;
     }
@@ -75,12 +75,12 @@ mur_horizontalB (SLIDER S) 	// retourne la position du slider en dessous du mur 
   a = tmp = -2;
   for (n = 0; n < S.N; n++)
     {
-      if (S.mury[n] == S.y && S.murx[n] == S.x && S.murz[n] == 6)
+      if (S.m.mury[n] == S.y && S.m.murx[n] == S.x && S.m.type[n] == 6)
 	return S.y;
-      if (S.murx[n] == S.x && S.mury[n] < S.y && S.murz[n] == 0)
-	tmp = S.mury[n] + 1;
-      if (S.murx[n] == S.x && S.mury[n] < S.y && S.murz[n] == 6)
-	tmp = S.mury[n];
+      if (S.m.murx[n] == S.x && S.m.mury[n] < S.y && S.m.type[n] == 0)
+	tmp = S.m.mury[n] + 1;
+      if (S.m.murx[n] == S.x && S.m.mury[n] < S.y && S.m.type[n] == 6)
+	tmp = S.m.mury[n];
       if (tmp > a)
 	a = tmp;
     }

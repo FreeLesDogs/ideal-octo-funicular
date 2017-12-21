@@ -10,21 +10,12 @@
 int
 main (int argc, char *argv[])
 {
-  printf ("Debut slider\n");
-  
-  printf("%s",argv[1]); 
-   
-  if (argv[1][0]=='-'&&argv[1][1]=='c')
-  {
-	int x,y;
-	x=atoi(argv[2]);
-	y=atoi(argv[3]);
-	editeur(x,y,argv[4]);  
-  }
+	printf ("Debut slider\n");
+	printf("%s",argv[1]); 
 
   SLIDER S;
   LISTE l = NULL;
-  S = init_slider (argv[1],S);
+  S=init_slider(argv[1],S);
   afficher_slider(S);
   l = bouge (S, l);
   finir_affichage (S);

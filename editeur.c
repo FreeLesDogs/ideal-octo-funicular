@@ -74,12 +74,12 @@ void dessine_un_mur(SLIDER S,int n)
 
 SLIDER place_mur(FILE * f, int fl,POINT p,int n, SLIDER S)
 {
-	S.murx[n]=p.x/TAILLE_CASE; S.mury[n]=p.y/TAILLE_CASE;
-	if (fl==FLECHE_HAUTE) S.murz[n]=0;
-	if (fl==FLECHE_DROITE) S.murz[n]=3;
-	if (fl==FLECHE_BAS) S.murz[n]=6;
-	if (fl==FLECHE_GAUCHE) S.murz[n]=9;
-	fprintf(f,"%d %d %d\n",S.murx[n],S.mury[n],S.murz[n]);
+	S.m.murx[n]=p.x/TAILLE_CASE; S.m.mury[n]=p.y/TAILLE_CASE;
+	if (fl==FLECHE_HAUTE) S.m.type[n]=0;
+	if (fl==FLECHE_DROITE) S.m.type[n]=3;
+	if (fl==FLECHE_BAS) S.m.type[n]=6;
+	if (fl==FLECHE_GAUCHE) S.m.type[n]=9;
+	fprintf(f,"%d %d %d\n",S.m.murx[n],S.m.mury[n],S.m.type[n]);
 	dessine_un_mur(S,n);
 	
 	return S;
@@ -89,9 +89,9 @@ SLIDER ecrire_murs(FILE * f,SLIDER S)
 {
 	int a,fl,n; char c; POINT p;
 	a=n=0;
-	S.murx = malloc ((S.N) * sizeof (int));
-    S.mury = malloc ((S.N) * sizeof (int));
-    S.murz = malloc ((S.N) * sizeof (int));
+	S.m.murx = malloc ((S.N) * sizeof (int));
+    S.m.mury = malloc ((S.N) * sizeof (int));
+    S.m.type = malloc ((S.N) * sizeof (int));
     
 	while(a!= EST_CLIC && n!=S.N){
 	a = wait_key_arrow_clic (&c, &fl, &p);
