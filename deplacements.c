@@ -3,9 +3,6 @@
 #include "mes_types.h"
 #include "jeu.h"
 #include "afficher.h"
-
-
-
 /*Test sur toute la ligne si il y a un mur vertical, s'il y en a un prend la valeur de la case à gauche, puis compare
  * laquelle est plus pres du Slider*/
 int
@@ -15,18 +12,18 @@ mur_verticalG (SLIDER S)	// Retourne la postion à gauche du mur le plus proche 
   a = tmp = -1;
   for (i=0;i<S.N;i++) 
     {
-      if (S.mury[i] == S.y && S.murx[i] == S.x && S.murz[i] == 9)
+      if (S.mury[i]==S.y&&S.murx[i]==S.x&&S.murz[i]==9)
 	return S.x;
-      if (S.mury[i] == S.y && S.murx[i] < S.x && S.murz[i] == 9)
-	tmp = S.murx[i];
-      if (S.mury[i] == S.y && S.murx[i] < S.x && S.murz[i] == 3)
+      if (S.mury[i]==S.y&&S.murx[i]<S.x&&S.murz[i]==9)
+	tmp=S.murx[i];
+      if(S.mury[i]==S.y && S.murx[i]<S.x&&S.murz[i]==3)
 	tmp = S.murx[i] + 1;
       if (tmp > a)
-	a = tmp;
+	a=tmp;
     }
-  if (a == -1)
+  /*if (a == -1)
     a = 0;
-  return a;
+  */return a;
 }
 
 int
@@ -67,7 +64,7 @@ mur_horizontalH (SLIDER S)	// retourne la position du slider au dessus du mur le
 	a = tmp;
     }
   if (a == S.H + 1)
-    a = S.H - 1;
+    a = S.H - 1;//bloque max à remplacer avec choc
   return a;
 }
 
@@ -92,10 +89,10 @@ mur_horizontalB (SLIDER S) 	// retourne la position du slider en dessous du mur 
   return a;
 }
 
-SLIDER avance_droite (SLIDER S)
+SLIDER deplace_droite(SLIDER S)
 {
-  int a, i;
-  a = mur_verticalD (S);
+  int a,i;
+  a=mur_verticalD(S);
   
   if (S.x<S.sx && a > S.sx && S.y == S.sy)
     {
@@ -106,7 +103,7 @@ SLIDER avance_droite (SLIDER S)
   a = a * TAILLE_CASE + (TAILLE_CASE / 2);
   for (i = S.ps.x; i < a; i += TAILLE_CASE)
     {
-      //attendre (10);
+      attendre (10);
       effacer_le_slider (S);
       S.ps.x += TAILLE_CASE;
       afficher_le_slider (S);
@@ -115,8 +112,7 @@ SLIDER avance_droite (SLIDER S)
   return S;
 }
 
-SLIDER
-avance_gauche (SLIDER S)
+SLIDER deplace_gauche (SLIDER S)
 {
   int a, i;
   a = mur_verticalG (S);
@@ -136,8 +132,7 @@ avance_gauche (SLIDER S)
   return S;
 }
 
-SLIDER
-avance_haut (SLIDER S)
+SLIDER deplace_haut (SLIDER S)
 {
   int a, i;
   a = mur_horizontalH (S);
@@ -158,8 +153,7 @@ avance_haut (SLIDER S)
   return S;
 }
 
-SLIDER
-avance_bas (SLIDER S)
+SLIDER deplace_bas (SLIDER S)
 {
   int a, i;
   a = mur_horizontalB (S);
@@ -179,16 +173,15 @@ avance_bas (SLIDER S)
   return S;
 }
 
-SLIDER
-deplace (int f, SLIDER S)
+SLIDER deplace (int f,SLIDER S)
 {
   if (f == FLECHE_GAUCHE)
-    S = avance_gauche (S);
+    S = deplace_gauche(S);// mettre get_arrow dans les deplace______________
   if (f == FLECHE_DROITE)
-    S = avance_droite (S);
+    S = deplace_droite (S);
   if (f == FLECHE_HAUTE)
-    S = avance_haut (S);
+    S = deplace_haut (S);
   if (f == FLECHE_BAS)
-    S = avance_bas (S);
+    S = deplace_bas (S);
   return S;
 }

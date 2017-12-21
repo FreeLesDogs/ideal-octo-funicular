@@ -29,33 +29,34 @@ void afficher_quadrillage(SLIDER S) //Affiche le quadrillage
 
 void afficher_murs (SLIDER S)//Affiche les murs
 {
-	int i=0;POINT p1,p2;
+	int i;
+	POINT p1,p2;
   
 	for(i=0;i<S.N;i++)
 	{
-		if (S.murz[i] == 0)
+		if (S.murz[i]==0)
 		{
-		  p1.x = (S.murx[i]) * TAILLE_CASE;
-		  p2.x = p1.x + TAILLE_CASE;
-		  p1.y = p2.y = (S.mury[i]) * TAILLE_CASE + TAILLE_CASE;
+		  p1.x=((S.murx[i])*TAILLE_CASE);
+		  p2.x=p1.x + TAILLE_CASE;
+		  p1.y =p2.y=(S.mury[i])*TAILLE_CASE+TAILLE_CASE;
 		}
-		if (S.murz[i] == 6)
+		if(S.murz[i]==6)
 		{
-		  p1.x = (S.murx[i]) * TAILLE_CASE;
-		  p2.x = p1.x + TAILLE_CASE;
-		  p1.y = p2.y = (S.mury[i]) * TAILLE_CASE;
+		  p1.x=(S.murx[i])*TAILLE_CASE;
+		  p2.x=p1.x+TAILLE_CASE;
+		  p1.y=p2.y=(S.mury[i])*TAILLE_CASE;
 		}
-		if (S.murz[i] == 3)
+		if(S.murz[i]==3)
 		{
-		  p1.y = (S.mury[i]) * TAILLE_CASE;
-		  p2.y = p1.y + TAILLE_CASE;
-		  p1.x = p2.x = TAILLE_CASE + (S.murx[i]) * TAILLE_CASE;
+		  p1.y=(S.mury[i])*TAILLE_CASE;
+		  p2.y=p1.y+TAILLE_CASE;
+		  p1.x=p2.x=TAILLE_CASE+(S.murx[i])*TAILLE_CASE;
 		}
-		  if (S.murz[i] == 9)
+		if(S.murz[i]==9)
 		{
-		  p1.y = (S.mury[i]) * TAILLE_CASE;
-		  p2.y = p1.y + TAILLE_CASE;
-		  p1.x = p2.x = (S.murx[i]) * TAILLE_CASE;
+		  p1.y=(S.mury[i])*TAILLE_CASE;
+		  p2.y = p1.y+TAILLE_CASE;
+		  p1.x = p2.x=(S.murx[i])*TAILLE_CASE;
 		}
 		  draw_line (p1,p2,blanc);
 		  
