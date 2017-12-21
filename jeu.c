@@ -40,7 +40,7 @@ bouge (SLIDER S, LISTE l)
 		   afficher_le_slider(S);
 		   
 	   }
-	   S.coups++;
+	   
     }
   return l;
 }

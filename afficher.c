@@ -32,7 +32,7 @@ void afficher_murs (SLIDER S)//Affiche les murs
 	int i;
 	POINT_D p;
   
-	for(i=0;i<S.N;i++)
+	for(i=0;i<S.n;i++)
 	{
 		if (S.m.type[i]==0)
 		{
@@ -65,21 +65,21 @@ void afficher_murs (SLIDER S)//Affiche les murs
 
 void afficher_le_slider (SLIDER S) //Affiche le Slider
 {
-  draw_fill_circle (S.ps,25,bleu);
+  draw_fill_circle (S.balle,25,bleu);
 }
 
 void effacer_le_slider (SLIDER S) //Efface le Slider
 {
-  draw_fill_circle (S.ps,25,noir);
+  draw_fill_circle (S.balle,25,noir);
 }
 
 void afficher_sortie (SLIDER S) //Affiche la sortie
 {
   POINT_D p;
-  p.p1.x = (S.sx * TAILLE_CASE);
-  p.p1.y = (S.sy * TAILLE_CASE);
-  p.p2.x = (S.sx * TAILLE_CASE)+ TAILLE_CASE;
-  p.p2.y = (S.sy * TAILLE_CASE)+ TAILLE_CASE;			//a modifier pour etre commeaffiche grille
+  p.p1.x=(S.sx*TAILLE_CASE);//utiliser POINT D sortie
+  p.p1.y=(S.sy*TAILLE_CASE);
+  p.p2.x=(S.sx*TAILLE_CASE)+ TAILLE_CASE;
+  p.p2.y=(S.sy*TAILLE_CASE)+ TAILLE_CASE;			//a modifier pour etre commeaffiche grille
   draw_fill_rectangle (p.p1,p.p2,white);
   
 }

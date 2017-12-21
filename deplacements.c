@@ -10,7 +10,7 @@ mur_verticalG (SLIDER S)	// Retourne la postion à gauche du mur le plus proche 
 {
   int a, tmp, i;
   a = tmp = -1;
-  for (i=0;i<S.N;i++) 
+  for (i=0;i<S.n;i++) 
     {
       if (S.m.mury[i]==S.y&&S.m.murx[i]==S.x&&S.m.type[i]==9)
 	return S.x;
@@ -31,7 +31,7 @@ mur_verticalD (SLIDER S) // Retourne la postion à droite du mur le plus proche 
 {
   int a, tmp, n;
   a = tmp = S.L + 1;
-  for (n = 0; n < S.N; n++)
+  for (n = 0; n < S.n; n++)
     {
       if (S.m.mury[n] == S.y && S.m.murx[n] == S.x && S.m.type[n] == 3)
 	return S.x;
@@ -52,7 +52,7 @@ mur_horizontalH (SLIDER S)	// retourne la position du slider au dessus du mur le
 {
   int a, tmp, n;
   a = tmp = S.H + 1;
-  for (n = 0; n < S.N; n++)
+  for (n = 0; n < S.n; n++)
     {
       if (S.m.mury[n] == S.y && S.m.murx[n] == S.x && S.m.type[n] == 0)
 	return S.y;
@@ -73,7 +73,7 @@ mur_horizontalB (SLIDER S) 	// retourne la position du slider en dessous du mur 
 {
   int a, tmp, n;
   a = tmp = -2;
-  for (n = 0; n < S.N; n++)
+  for (n = 0; n < S.n; n++)
     {
       if (S.m.mury[n] == S.y && S.m.murx[n] == S.x && S.m.type[n] == 6)
 	return S.y;
@@ -101,11 +101,11 @@ SLIDER deplace_droite(SLIDER S)
    S.x = a;
     printf("a= %d",a);
   a = a * TAILLE_CASE + (TAILLE_CASE / 2);
-  for (i = S.ps.x; i < a; i += TAILLE_CASE)
+  for (i = S.balle.x; i < a; i += TAILLE_CASE)
     {
-      attendre (10);
+      //attendre (100);
       effacer_le_slider (S);
-      S.ps.x += TAILLE_CASE;
+      S.balle.x += TAILLE_CASE;
       afficher_le_slider (S);
     }
 
@@ -122,11 +122,10 @@ SLIDER deplace_gauche (SLIDER S)
     }
    S.x = a;
   a = a * TAILLE_CASE + (TAILLE_CASE / 2);
-  for (i = S.ps.x; i > a; i -= TAILLE_CASE)
+  for (i = S.balle.x; i > a; i -= TAILLE_CASE)
     {
-      attendre (10);
       effacer_le_slider (S);
-      S.ps.x -= TAILLE_CASE;
+      S.balle.x -= TAILLE_CASE;
       afficher_le_slider (S);
     }
   return S;
@@ -142,11 +141,10 @@ SLIDER deplace_haut (SLIDER S)
     }
   S.y = a;
   a = a * TAILLE_CASE + (TAILLE_CASE / 2);
-  for (i = S.ps.y; i < a; i += TAILLE_CASE)
+  for (i = S.balle.y; i < a; i += TAILLE_CASE)
     {
-      attendre (10);
       effacer_le_slider (S);
-      S.ps.y += TAILLE_CASE;
+      S.balle.y += TAILLE_CASE;
       afficher_le_slider (S);
     }
 
@@ -163,11 +161,10 @@ SLIDER deplace_bas (SLIDER S)
     }
     S.y = a;
   a = a * TAILLE_CASE + (TAILLE_CASE / 2);
-  for (i = S.ps.y; i > a; i -= TAILLE_CASE)
+  for (i = S.balle.y; i > a; i -= TAILLE_CASE)
     {
-      attendre (10);
       effacer_le_slider (S);
-      S.ps.y -= TAILLE_CASE;
+      S.balle.y -= TAILLE_CASE;
       afficher_le_slider (S);
     }
   return S;

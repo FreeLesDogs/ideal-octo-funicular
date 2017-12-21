@@ -5,8 +5,8 @@ LISTE
 ajout (LISTE l, SLIDER S)
 {
   LISTE tmp = malloc (sizeof (struct element));
-  tmp->ps.x = S.ps.x;
-  tmp->ps.y = S.ps.y;
+  tmp->balle.x = S.balle.x;
+  tmp->balle.y = S.balle.y;
   tmp->suiv = l;
   return tmp;
 }
@@ -69,6 +69,6 @@ retour (LISTE l, SLIDER S, int c)
     {
       l = retour_debut (l);
     }
-   S.ps=l->ps;
+   S.balle=l->balle;
   return l;
 }

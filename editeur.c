@@ -38,7 +38,7 @@ SLIDER ecrire_position_slider(FILE * f,SLIDER S)
 	}
 	S.x=p.x/TAILLE_CASE;
 	S.y=p.y/TAILLE_CASE;
-	S.ps.x=((S.x)*TAILLE_CASE)+(TAILLE_CASE/2); S.ps.y=((S.y)*TAILLE_CASE)+(TAILLE_CASE/2);
+	S.balle.x=((S.x)*TAILLE_CASE)+(TAILLE_CASE/2); S.balle.y=((S.y)*TAILLE_CASE)+(TAILLE_CASE/2);
 	afficher_le_slider(S);
 	fprintf(f,"%d %d \n",S.x,S.y);
 	return S;
@@ -63,7 +63,7 @@ SLIDER ecrire_nb_murs(FILE * f,SLIDER S) //demande nombre de murs
 			printf("i= %d",i);
 		}
 	}
-	S.N=i;
+	S.n=i;
 	return S;
 }
 
@@ -89,11 +89,11 @@ SLIDER ecrire_murs(FILE * f,SLIDER S)
 {
 	int a,fl,n; char c; POINT p;
 	a=n=0;
-	S.m.murx = malloc ((S.N) * sizeof (int));
-    S.m.mury = malloc ((S.N) * sizeof (int));
-    S.m.type = malloc ((S.N) * sizeof (int));
+	S.m.murx = malloc ((S.n) * sizeof (int));
+    S.m.mury = malloc ((S.n) * sizeof (int));
+    S.m.type = malloc ((S.n) * sizeof (int));
     
-	while(a!= EST_CLIC && n!=S.N){
+	while(a!= EST_CLIC && n!=S.n){
 	a = wait_key_arrow_clic (&c, &fl, &p);
 		while(a!= EST_FLECHE) a = wait_key_arrow_clic (&c, &fl, &p);
     S=place_mur(f,fl,p,n,S);
