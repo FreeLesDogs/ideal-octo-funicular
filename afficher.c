@@ -59,7 +59,7 @@ void afficher_murs (SLIDER S)//Affiche les murs
 		  p.p1.x = p.p2.x=(S.m.murx[i])*TAILLE_CASE;
 		}
 		  draw_line (p.p1,p.p2,blanc);
-		  
+		  printf("mur n°%d:\n abscisse:%d ordonnee:%d type:%d\n",i+1,S.m.murx[i],S.m.mury[i],S.m.type[i]);
     }
 }
 
@@ -75,13 +75,14 @@ void effacer_le_slider (SLIDER S) //Efface le Slider
 
 void afficher_sortie (SLIDER S) //Affiche la sortie
 {
-  POINT_D p;
-  p.p1.x=(S.sx*TAILLE_CASE);//utiliser POINT D sortie
-  p.p1.y=(S.sy*TAILLE_CASE);
-  p.p2.x=(S.sx*TAILLE_CASE)+ TAILLE_CASE;
-  p.p2.y=(S.sy*TAILLE_CASE)+ TAILLE_CASE;			//a modifier pour etre commeaffiche grille
-  draw_fill_rectangle (p.p1,p.p2,white);
-  
+	POINT_D p;
+	p.p1.x=(S.sx*TAILLE_CASE);
+	p.p1.y=(S.sy*TAILLE_CASE);
+	
+	p.p2.x=(S.sx*TAILLE_CASE)+TAILLE_CASE;
+	p.p2.y=(S.sy*TAILLE_CASE)+ TAILLE_CASE;
+	
+	draw_fill_rectangle (p.p1,p.p2,white);
 }
 
 void afficher_slider(SLIDER S) //Affiche tout
@@ -93,7 +94,7 @@ void afficher_slider(SLIDER S) //Affiche tout
   afficher_sortie (S);
 }
 
-void finir_affichage(SLIDER S)//quand on gagne
+void gagnant(SLIDER S)//quand on gagne
 {
   fill_screen(black);
   POINT p; 

@@ -5,10 +5,6 @@ all: slider
 test: slider
 	./slider fichier1.slider
 
-# Edition de liens
-slider: slider.o lire_ecrire.o afficher.o jeu.o deplacements.o listes_memo.o editeur.o
-	gcc slider.o lire_ecrire.o afficher.o jeu.o deplacements.o listes_memo.o editeur.o -o slider -luvsqgraphics `sdl-config --libs` -lm -lSDL_ttf
-
 # Compilation
 slider.o: slider.c mes_types.h lire_ecrire.h afficher.h  listes_memo.h editeur.h
 	gcc -c -Wall `sdl-config --cflags` slider.c
@@ -33,8 +29,9 @@ deplacements.o: deplacements.c mes_types.h afficher.h
 jeu.o: jeu.c deplacements.h afficher.h listes_memo.h
 	gcc -c -Wall `sdl-config --cflags` jeu.c
 	
-editeur.o: editeur.c mes_types.h afficher.h
-	gcc -c -Wall `sdl-config --cflags` editeur.c
+# Edition de liens
+slider: slider.o lire_ecrire.o afficher.o jeu.o deplacements.o listes_memo.o 
+	gcc *.o -o slider -luvsqgraphics `sdl-config --libs` -lm -lSDL_ttf
 
 editeur:
 	geany Makefile *.c mes_types.h&

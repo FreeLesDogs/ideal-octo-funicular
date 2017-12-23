@@ -3,12 +3,12 @@
 #include "mes_types.h"
 //faire init apres lire_ecrire
 //void erreur argument
-SLIDER lire_fichier(FILE * fichier, SLIDER S){
+SLIDER lire_fichier(FILE*fichier,SLIDER S){
 	fscanf (fichier,"%d %d %d %d %d %d ",&S.L,&S.H,&S.x,&S.y,&S.sx,&S.sy);
 	return S;	
 }
 
-SLIDER lire_murs (FILE * fichier, SLIDER S){
+SLIDER lire_murs (FILE*fichier,SLIDER S){
 	int i;
 	//fseek();
 	fscanf (fichier,"%d",&S.n);
@@ -18,7 +18,6 @@ SLIDER lire_murs (FILE * fichier, SLIDER S){
 	for(i=0;i<S.n;i++)
     {
 		fscanf(fichier,"%d %d %d",&S.m.murx[i],&S.m.mury[i],&S.m.type[i]);
-		printf("mur n°%d:\n abscisse:%d ordonnee:%d type:%d\n",i+1,S.m.murx[i],S.m.mury[i],S.m.type[i]);
 	}
 	return S;
 }
@@ -31,9 +30,9 @@ SLIDER init_position_slider(SLIDER S){
 
 SLIDER init_slider(char *fic,SLIDER S){
 	
-	FILE *fichier=NULL;
-	fichier=fopen(fic, "r");
-	S=lire_fichier(fichier, S);
+	FILE *fichier;
+	fichier=fopen(fic,"r");
+	S=lire_fichier(fichier,S);
 	S=init_position_slider(S);
 	S=lire_murs (fichier, S);
 	fclose (fichier);

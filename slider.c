@@ -5,35 +5,28 @@
 #include "afficher.h"
 #include "listes_memo.h"
 #include "jeu.h"
-#include "editeur.h"
+
 
 int main (int argc, char *argv[])
 {
 	printf ("Debut slider\n");
 	printf("%s",argv[1]); 
 
-  SLIDER S;
-  LISTE l = NULL;
-  S=init_slider(argv[1],S);
+	SLIDER S;
+	LISTE l=NULL;
+	
+	S=init_slider(argv[1],S);
+  
+	afficher_slider(S);
+  
+	l = bouge (S,l);
+  
+	gagnant(S);
+  
+  	libere_murs(S);
+	libere_liste(l);
   
   
-  initialiser_affichage (S);
-  afficher_quadrillage(S);
-  afficher_murs(S);
-  afficher_le_slider(S);
-  afficher_sortie(S);
-  
-  
-  l = bouge (S,l);
-  
-  
-  finir_affichage(S);
-  
-  
-  libere_murs(S);
-  libere_liste(l);
-  
-  
-  wait_escape();
-  exit (0);
+	wait_escape();
+	exit (0);
 }
