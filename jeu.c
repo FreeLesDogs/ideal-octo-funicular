@@ -5,33 +5,28 @@
 #include "deplacements.h"
 #include "listes_memo.h"
 
-
-
-
-LISTE bouge (SLIDER S, LISTE l)
+LISTE bouge(SLIDER S,LISTE l)
 {
-	char c;
-    int a,f;
-	POINT p;
+	char c;int a,f;POINT p;
 	l=ajout(l,S);
 	while (!sortie(S))
     {
-		a=wait_key_arrow_clic (&c,&f,&p); //get arrow
-		//S.x=(S.balle.x-(TAILLE_CASE/2))/TAILLE_CASE;
-		//S.y=(S.balle.y-(TAILLE_CASE/2))/TAILLE_CASE;
-
-	if (a == EST_FLECHE)
-	{
-		S = deplace (f, S);
-		l = ajout(l,S);
-	}
-	if (a == EST_TOUCHE)
-    {
-		l = retour (l, S, c);
-		S.balle=l->balle;
-		afficher_le_slider(S);
-	}
-	   
+		a=wait_key_arrow_clic(&c,&f,&p);
+		if (a==EST_FLECHE)
+		{
+			S=deplace(f,S);
+			l=ajout(l,S);
+		}
+		if (a==EST_TOUCHE)
+		{
+			l=retour(l,S,c);
+			S.balle=l->balle;
+			afficher_le_slider(S);
+		}
+		if(a==EST_CLIC)
+		{
+			position(S);
+		}
     }
-  return l;
+	return l;
 }

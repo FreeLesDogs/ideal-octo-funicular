@@ -26,7 +26,8 @@ int mur_verticalG (SLIDER S)	// Retourne la postion à gauche du mur le plus pro
   return a;
 }
 
-int mur_verticalD (SLIDER S) // Retourne la postion à droite du mur le plus proche à droite du slider
+int mur_verticalD (SLIDER S) // Retourne la postion à droite du mur le plus proche à droite du slider 
+//ptet a combiner avec deplace
 {
   int a, tmp, i;
   a = tmp = S.L + 1;
@@ -152,7 +153,7 @@ SLIDER deplace_bas (SLIDER S)
 {
   int a, i;
   a = mur_horizontalB (S);
-  if (S.y>S.sy && a < S.sy && S.x == S.sx)
+  if (S.y>S.sy && a < S.sy && S.x == S.sx)//utiliser pos_mur_g
     {
       a = S.sy;
     }
@@ -180,7 +181,35 @@ SLIDER deplace (int f,SLIDER S)
     
 	return S;
 }
-
+int pos_mur_g(SLIDER S)
+{
+	int i,j,k;int tab[S.n];
+	j=0;
+	for(i=0;i<S.n;i++)
+	{
+		if((S.m.type[i]==9||S.m.type[i]==3)&&(S.m.mury[i]==S.y)&&(S.m.murx[i]<S.x))	//attention au 9 3
+		{
+			tab[j]=S.m.murx[i];
+			printf("%d \n",tab[j]);
+			j++;
+		}
+	}
+	for(i=0;i<j;i++)
+	{
+		k=0;
+		if(tab[i]>=k)
+		{
+			k=tab[i];
+		}
+	}
+	printf(" %d\n",k);
+return k;
+}
+void position(SLIDER S)
+{
+	int a;
+	a=pos_mur_g(S);
+}
 int sortie(SLIDER S)
 {
 	if(S.x==S.sx && S.y==S.sy)return 1;

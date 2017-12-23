@@ -39,6 +39,18 @@ SLIDER init_slider(char *fic,SLIDER S){
 	return S;
 }
 
+SLIDER ecrire(FILE *fichier,SLIDER S)
+{
+	int L,H;
+	fprintf(fichier,"%d %d \n",L,H);
+	S.L=L; S.H=H;
+	fprintf(fichier,"%d %d \n",L,H);
+	S.L=L; S.H=H;
+	
+	
+	
+	return S;
+}
 
 
 
