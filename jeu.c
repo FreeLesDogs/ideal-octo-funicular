@@ -23,10 +23,7 @@ LISTE bouge(SLIDER S,LISTE l)
 			S.balle=l->balle;
 			afficher_le_slider(S);
 		}
-		if(a==EST_CLIC)
-		{
-			position(S);
-		}
+		
     }
 	return l;
 }

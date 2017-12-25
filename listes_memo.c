@@ -57,8 +57,7 @@ libere_murs (SLIDER S)
 	
 }
 
-LISTE
-retour (LISTE l, SLIDER S, int c)
+LISTE retour (LISTE l, SLIDER S,int c)
 {
 	effacer_le_slider(S);
   if (l != NULL && c == 'U')	//Pour faire le undo
