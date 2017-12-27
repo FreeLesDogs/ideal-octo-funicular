@@ -8,16 +8,16 @@
 SLIDER deplace_droite(SLIDER S)
 {
 	int a, tmp, i;//supprimer tmp
-  a = tmp = S.L + 1;
+  a=tmp=S.L+1;
   for (i=0;i<S.n; i++)
     {
 		if (S.m.mury[i] == S.y && S.m.murx[i] == S.x && S.m.type[i] == 3)
 			return S;
 		if (S.m.mury[i] == S.y && S.m.murx[i] > S.x && S.m.type[i] == 9)
-			tmp = S.m.murx[i] - 1;
+			tmp=S.m.murx[i]-1;
 		if (S.m.mury[i] == S.y && S.m.murx[i] > S.x && S.m.type[i] == 3)
-			tmp = S.m.murx[i];
-		if (tmp < a)
+			tmp=S.m.murx[i];
+		if (tmp<a)
 			a = tmp;
 		if (a == S.L + 1)
 			a = S.L - 1;
