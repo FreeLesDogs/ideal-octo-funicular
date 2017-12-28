@@ -1,74 +1,68 @@
 #include "mes_types.h"
 #include "afficher.h"
 
-LISTE
-ajout (LISTE l, SLIDER S)	//Ajoute un deplacement dans la liste
+LISTE ajout (LISTE l, SLIDER S)	//Ajoute un deplacement dans la liste
 {
   LISTE tmp = malloc (sizeof (struct element));
   tmp->balle.x = S.balle.x;
   tmp->balle.y = S.balle.y;
-  tmp->suiv = l;
+  tmp->prec=l;
   return tmp;
 }
 
-LISTE
-libere_liste (LISTE l)		//Vide la liste : libere memoire
+LISTE libere_liste (LISTE l)		//Vide la liste : libere memoire
 {
   LISTE ll;
   while (l != NULL)
     {
       ll = l;
-      l = l->suiv;
+      l = l->prec;
       free (ll);
     }
   free (l);
   return NULL;
 }
 
-LISTE
-supp_un_element (LISTE l)	//Suprime le dernier element : pour l'undo
+LISTE supp_un_element (LISTE l)	//Suprime le dernier element : pour l'undo
 {
   LISTE ll;
-  if (l->suiv != NULL)
+  if (l->prec != NULL)
     {
       ll = l;
-      l = l->suiv;
+      l = l->prec;
       free (ll);
     }
   return l;
 }
 
-LISTE
-retour_debut (LISTE l)		//revient à la premiere pos
+LISTE retour_debut (LISTE l)		//revient à la premiere pos
 {
   LISTE ll;
-  while (l->suiv != NULL)
+  while (l->prec!= NULL)
     {
       ll = l;
-      l = l->suiv;
+      l = l->prec;
       free (ll);
     }
   return l;
 }
 
-void
-libere_murs (SLIDER S)
+void libere_murs (SLIDER S)
 {
 
 }
 
-LISTE
-retour (LISTE l, SLIDER S, int c)
+LISTE retour (LISTE l, SLIDER S, int c)
 {
   effacer_le_slider (S);
   if (l != NULL && c == 'U')	//Pour faire le undo
     {
       l = supp_un_element (l);
     }
-  if (l != NULL && l->suiv != NULL && c == 'R')	//Pour recommencer
+  if (l != NULL && l->prec != NULL && c == 'R')	//Pour recommencer
     {
       l = retour_debut (l);
     }
-  S.balle= l->balle;
+  S.balle = l->balle;
   return l;
 }

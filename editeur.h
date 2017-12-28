@@ -1,1 +1,1 @@
-void editeur(int L,int H,char* nom);
+SLIDER editeur(SLIDER S,int L,int H,char* nom);

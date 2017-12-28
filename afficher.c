@@ -36,30 +36,30 @@ void afficher_murs (SLIDER S)//Affiche les murs
 	{
 		if (S.m.type[i]==0)
 		{
-		  p.p1.x=((S.m.murx[i])*TAILLE_CASE);
+		  p.p1.x=((S.m.x[i])*TAILLE_CASE);
 		  p.p2.x=p.p1.x + TAILLE_CASE;
-		  p.p1.y =p.p2.y=(S.m.mury[i])*TAILLE_CASE+TAILLE_CASE;
+		  p.p1.y =p.p2.y=(S.m.y[i])*TAILLE_CASE+TAILLE_CASE;
 		}
 		if(S.m.type[i]==6)
 		{
-		  p.p1.x=(S.m.murx[i])*TAILLE_CASE;
+		  p.p1.x=(S.m.x[i])*TAILLE_CASE;
 		  p.p2.x=p.p1.x+TAILLE_CASE;
-		  p.p1.y=p.p2.y=(S.m.mury[i])*TAILLE_CASE;
+		  p.p1.y=p.p2.y=(S.m.y[i])*TAILLE_CASE;
 		}
 		if(S.m.type[i]==3)
 		{
-		  p.p1.y=(S.m.mury[i])*TAILLE_CASE;
+		  p.p1.y=(S.m.y[i])*TAILLE_CASE;
 		  p.p2.y=p.p1.y+TAILLE_CASE;
-		  p.p1.x=p.p2.x=TAILLE_CASE+(S.m.murx[i])*TAILLE_CASE;
+		  p.p1.x=p.p2.x=TAILLE_CASE+(S.m.x[i])*TAILLE_CASE;
 		}
 		if(S.m.type[i]==9)
 		{
-		  p.p1.y=(S.m.mury[i])*TAILLE_CASE;
+		  p.p1.y=(S.m.y[i])*TAILLE_CASE;
 		  p.p2.y = p.p1.y+TAILLE_CASE;
-		  p.p1.x = p.p2.x=(S.m.murx[i])*TAILLE_CASE;
+		  p.p1.x = p.p2.x=(S.m.x[i])*TAILLE_CASE;
 		}
 		  draw_line (p.p1,p.p2,blanc);
-		  printf("mur n°%d:\n abscisse:%d ordonnee:%d type:%d\n",i+1,S.m.murx[i],S.m.mury[i],S.m.type[i]);
+		  printf("mur n°%d:\n abscisse:%d ordonnee:%d type:%d\n",i+1,S.m.x[i],S.m.y[i],S.m.type[i]);
     }
 }
 

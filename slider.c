@@ -1,32 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "mes_types.h"
 #include "lire_ecrire.h"
 #include "afficher.h"
 #include "listes_memo.h"
 #include "jeu.h"
-
+//#include "editeur.h"
+//#include "lire_dossier.h"
 
 int main (int argc, char *argv[])
 {
-	printf ("Debut slider\n");
-	printf("%s",argv[1]); 
+  printf ("Debut slider\n");
 
-	SLIDER S;
-	LISTE l=NULL;
-	
-	S=init_slider(argv[1],S);
+  SLIDER S;
+  LISTE l = NULL;
   
-	afficher_slider(S);
-  
-	l = bouge (S,l);
-  
-	gagnant(S);
-  
-  	libere_murs(S);
-	libere_liste(l);
-  
-  
-	wait_escape();
-	exit (0);
+  //Sinon on joue une partie classique
+    partie (S, argv[1],l);
+
+  exit (0);
 }

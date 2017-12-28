@@ -1,16 +1,15 @@
 #include "graphics.h"
-#define TAILLE_CASE 50
 
+#define TAILLE_CASE 50
 struct double_point
 {
 	POINT p1,p2;
 };
-typedef struct double_point POINT_D;//c'est suspect toutes les structures
-
+typedef struct double_point POINT_D;
 struct mur
 {
-	int *murx;// mettre x y
-	int *mury;
+	int *x;
+	int *y;
 	int *type;
 };
 typedef struct mur MUR;
@@ -28,6 +27,6 @@ typedef struct slider SLIDER;
 
 struct element{ // Liste chainée pour sauvegarder la position du slider
   POINT balle;
-  struct element *suiv;
+  struct element *prec;
 };
 typedef struct element *LISTE;

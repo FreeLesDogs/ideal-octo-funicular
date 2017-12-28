@@ -3,22 +3,21 @@
 #include "mes_types.h"
 #include "jeu.h"
 #include "afficher.h"
-/*Test sur toute la ligne si il y a un mur vertical, s'il y en a un prend la valeur de la case à gauche, puis compare
- laquelle est plus pres du Slider*/
+//gh
 SLIDER deplace_droite(SLIDER S)
 {
 	int a, tmp, i;//supprimer tmp
   a=tmp=S.L+1;
   for (i=0;i<S.n; i++)
     {
-		if (S.m.mury[i] == S.y && S.m.murx[i] == S.x && S.m.type[i] == 3)
+		if (S.m.y[i] == S.y && S.m.x[i] == S.x && S.m.type[i] == 3)
 			return S;
-		if (S.m.mury[i] == S.y && S.m.murx[i] > S.x && S.m.type[i] == 9)
-			tmp=S.m.murx[i]-1;
-		if (S.m.mury[i] == S.y && S.m.murx[i] > S.x && S.m.type[i] == 3)
-			tmp=S.m.murx[i];
+		if (S.m.y[i]==S.y&& S.m.x[i]> S.x && S.m.type[i] == 9)
+			tmp=S.m.x[i]-1;
+		if (S.m.y[i] == S.y && S.m.x[i] > S.x && S.m.type[i] == 3)
+			tmp=S.m.x[i];
 		if (tmp<a)
-			a = tmp;
+			a=tmp;
 		if (a == S.L + 1)
 			a = S.L - 1;
     }
@@ -41,15 +40,15 @@ SLIDER deplace_droite(SLIDER S)
 SLIDER deplace_gauche (SLIDER S)
 {
 	int a,tmp,i;
-	a=tmp=-1;//trouver une autre facon de savoir quelle mur est le plus proche
+	a=tmp=-1;
 	for(i=0;i<S.n;i++) 
     {
-		if(S.y==S.m.mury[i]&&S.x==S.m.murx[i]&&S.m.type[i]==9)
+		if(S.y==S.m.y[i]&&S.x==S.m.x[i]&&S.m.type[i]==9)
 		return S;
-		if(S.y==S.m.mury[i]&&S.x>S.m.murx[i]&&S.m.type[i]==9)
-		tmp=S.m.murx[i];
-		if(S.y==S.m.mury[i]&&S.x>S.m.murx[i]&&S.m.type[i]==3)
-		tmp=S.m.murx[i] + 1;
+		if(S.y==S.m.y[i]&&S.x>S.m.x[i]&&S.m.type[i]==9)
+		tmp=S.m.x[i];
+		if(S.y==S.m.y[i]&&S.x>S.m.x[i]&&S.m.type[i]==3)
+		tmp=S.m.x[i] + 1;
 		if (tmp > a)
 		a=tmp;
     }
@@ -76,12 +75,12 @@ SLIDER deplace_haut (SLIDER S)
   a = tmp = S.H + 1;
   for (i=0;i<S.n;i++)
     {
-      if (S.m.mury[i] == S.y && S.m.murx[i] == S.x && S.m.type[i] == 0)
+      if (S.m.y[i] == S.y && S.m.x[i] == S.x && S.m.type[i] == 0)
 	return S;
-      if (S.m.murx[i] == S.x && S.m.mury[i] > S.y && S.m.type[i] == 0)
-	tmp = S.m.mury[i];
-      if (S.m.murx[i] == S.x && S.m.mury[i] > S.y && S.m.type[i] == 6)
-	tmp = S.m.mury[i] - 1;
+      if (S.m.x[i] == S.x && S.m.y[i] > S.y && S.m.type[i] == 0)
+	tmp = S.m.y[i];
+      if (S.m.x[i] == S.x && S.m.y[i] > S.y && S.m.type[i] == 6)
+	tmp = S.m.y[i] - 1;
       if (tmp < a)
 	a = tmp;
     }
@@ -110,12 +109,12 @@ SLIDER deplace_bas (SLIDER S)
   a = tmp = -2;
   for (i=0;i<S.n;i++)
     {
-      if (S.m.mury[i] == S.y && S.m.murx[i] == S.x && S.m.type[i] == 6)
+      if (S.m.y[i] == S.y && S.m.x[i] == S.x && S.m.type[i] == 6)
 	return S;
-      if (S.m.murx[i] == S.x && S.m.mury[i] < S.y && S.m.type[i] == 0)
-	tmp = S.m.mury[i] + 1;
-      if (S.m.murx[i] == S.x && S.m.mury[i] < S.y && S.m.type[i] == 6)
-	tmp = S.m.mury[i];
+      if (S.m.x[i] == S.x && S.m.y[i] < S.y && S.m.type[i] == 0)
+	tmp = S.m.y[i] + 1;
+      if (S.m.x[i] == S.x && S.m.y[i] < S.y && S.m.type[i] == 6)
+	tmp = S.m.y[i];
       if (tmp > a)
 	a = tmp;
     }
@@ -139,7 +138,7 @@ SLIDER deplace_bas (SLIDER S)
 SLIDER deplace (int f,SLIDER S)
 {
 	if(f == FLECHE_GAUCHE)
-    S=deplace_gauche(S);// mettre get_arrow dans les deplace______________
+    S=deplace_gauche(S);
 	if(f == FLECHE_DROITE)
     S=deplace_droite (S);
 	if(f == FLECHE_HAUTE)
