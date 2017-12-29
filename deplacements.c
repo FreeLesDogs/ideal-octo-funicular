@@ -162,7 +162,7 @@ int sortie(SLIDER S)
 	}
 	return 0;
 }
-PILE bouge (SLIDER S,PILE l)
+PILE bouge (SLIDER S,PILE l)//void
 {
 	char c;
 	int a,f;
