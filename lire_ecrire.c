@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "mes_types.h"
 #include "afficher.h"
 //faire init apres lire_ecrire
@@ -28,6 +26,8 @@ SLIDER init_position_slider(SLIDER S){
 	S.balle.y=S.y*TAILLE_CASE+25;
 	return S;
 }
+
+
 
 SLIDER init_slider(char *fic,SLIDER S){
 	

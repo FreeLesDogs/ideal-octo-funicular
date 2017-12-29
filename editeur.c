@@ -5,8 +5,7 @@
 #include "afficher.h"
 
 
-SLIDER
-ecrire_taille_init (FILE * f, int L, int H, SLIDER S)	//ecrit la taille de la fenetre dans le fichier & affiche la grille
+SLIDER ecrire_taille_init (FILE * f, int L, int H, SLIDER S)	//ecrit la taille de la fenetre dans le fichier & affiche la grille
 {
   fprintf (f, "%d %d \n", L, H);
   S.L = L;
@@ -16,8 +15,7 @@ ecrire_taille_init (FILE * f, int L, int H, SLIDER S)	//ecrit la taille de la fe
   return S;
 }
 
-SLIDER
-ecrire_position_sortie (FILE * f, SLIDER S)	//ecrit la position de la sortie dans le fichier & l'affiche
+SLIDER ecrire_position_sortie (FILE * f, SLIDER S)	//ecrit la position de la sortie dans le fichier & l'affiche
 {
   int a, fl;
   char c;
@@ -36,8 +34,7 @@ ecrire_position_sortie (FILE * f, SLIDER S)	//ecrit la position de la sortie dan
   return S;
 }
 
-SLIDER
-ecrire_position_slider (FILE * f, SLIDER S)	//ecrit la position du Slider dans le fichier & l'affiche
+SLIDER ecrire_position_slider (FILE * f, SLIDER S)	//ecrit la position du Slider dans le fichier & l'affiche
 {
   int a, fl;
   char c;
@@ -57,8 +54,7 @@ ecrire_position_slider (FILE * f, SLIDER S)	//ecrit la position du Slider dans l
   return S;
 }
 
-SLIDER
-ecrire_nb_murs (FILE * f, SLIDER S)	//Demande nombre de murs
+SLIDER ecrire_nb_murs (FILE * f, SLIDER S)	//Demande nombre de murs
 {
   printf ("indiquez le nombre de murs souhaité : ");
   scanf ("%d", &S.N);
@@ -66,8 +62,7 @@ ecrire_nb_murs (FILE * f, SLIDER S)	//Demande nombre de murs
   return S;
 }
 
-SLIDER
-place_mur (FILE * f, int fl, POINT p, int n, SLIDER S)	//Affiche le mur dans le fichier && sur la fenetre
+SLIDER place_mur (FILE * f, int fl, POINT p, int n, SLIDER S)	//Affiche le mur dans le fichier && sur la fenetre
 {
   S.murx[n] = p.x / Taille_Case;
   S.mury[n] = p.y / Taille_Case;
@@ -85,8 +80,7 @@ place_mur (FILE * f, int fl, POINT p, int n, SLIDER S)	//Affiche le mur dans le 
   return S;
 }
 
-SLIDER
-ecrire_murs (FILE * f, SLIDER S)	//Cree les murs dans la memoire
+SLIDER ecrire_murs (FILE * f, SLIDER S)	//Cree les murs dans la memoire
 {
 
   int a, fl, n;
@@ -112,8 +106,7 @@ ecrire_murs (FILE * f, SLIDER S)	//Cree les murs dans la memoire
   return S;
 }
 
-SLIDER
-editeur (SLIDER S, int L, int H, char *nom)	//Gere l'edition
+SLIDER editeur (SLIDER S, int L, int H, char *nom)	//Gere l'edition
 {
   FILE *f = NULL;
   f = fopen (nom, "w+");

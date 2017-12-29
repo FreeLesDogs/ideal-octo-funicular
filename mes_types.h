@@ -25,8 +25,8 @@ struct slider {
 typedef struct slider SLIDER;
 
 
-struct element{ // Liste chainée pour sauvegarder la position du slider
+struct pile{ // Liste chainée pour sauvegarder la position du slider
   POINT balle;
-  struct element *prec;
+  struct pile *prec;
 };
-typedef struct element *LISTE;
+typedef struct pile *PILE;
