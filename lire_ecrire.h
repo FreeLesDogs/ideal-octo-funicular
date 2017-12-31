@@ -1,2 +1,2 @@
 SLIDER init_slider(char *nom,SLIDER S);
-void ecrire_fichier(SLIDER S, char*nom);
+void ecrire_dans_fic(FILE*fichier);

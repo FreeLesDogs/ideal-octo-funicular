@@ -110,13 +110,13 @@ SLIDER deplace_haut (SLIDER S)
 SLIDER deplace_bas (SLIDER S)
 {
   int a, tmp,i;
-  a = tmp = -2;
+  a=tmp=-2;
   for (i=0;i<S.n;i++)
     {
       if (S.m.y[i] == S.y && S.m.x[i] == S.x && S.m.type[i] == 6)
 	return S;
       if (S.m.x[i] == S.x && S.m.y[i] < S.y && S.m.type[i] == 0)
-	tmp = S.m.y[i] + 1;
+	tmp = S.m.y[i]+1;
       if (S.m.x[i] == S.x && S.m.y[i] < S.y && S.m.type[i] == 6)
 	tmp = S.m.y[i];
       if (tmp > a)
@@ -173,7 +173,7 @@ while (!(S.x==S.sx&&S.y==S.sy))
 	{
 		mouv=retour (mouv, S, c);
 		S.balle =mouv->balle;
-		afficher_le_slider(S);
+		afficher_slider(S);
 	}
       
 }

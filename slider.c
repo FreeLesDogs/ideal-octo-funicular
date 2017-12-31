@@ -11,6 +11,7 @@ int main (int argc, char *argv[])
 	SLIDER S;
 	PILE p;
 	p=NULL;
+	ecrire_dans_fic(argv[1]);
 	printf("nom du fichier %s \n",argv[1]);
 	S=init_slider(argv[1],S);
 	afficher_slider(S);

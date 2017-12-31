@@ -1,6 +1,6 @@
 #include "graphics.h"
 
-#define TAILLE_CASE 50
+#define TAILLE_CASE 75
 struct double_point
 {
 	POINT p1,p2;
