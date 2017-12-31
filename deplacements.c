@@ -172,7 +172,7 @@ while (!(S.x==S.sx&&S.y==S.sy))
     if (a==EST_TOUCHE)
 	{
 		mouv=retour (mouv, S, c);
-		S.balle =mouv->balle;
+		S.balle=mouv->balle;
 		afficher_slider(S);
 	}
       
