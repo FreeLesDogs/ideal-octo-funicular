@@ -17,7 +17,7 @@ typedef struct mur MUR;
 struct slider {
 	int L,H;	// Largeur et hauteur de la grille
 	int x,y;	// Position du slider en nombre de case
-	POINT balle;// Position du slider en coordonnées
+	POINT balle;// Position du slider en coordonnées àchanger
 	int sx,sy; 	// Position sortie POINT_D sortie
 	int n; 		// Nombre de murs
 	MUR m;		//on utilise la structure mur

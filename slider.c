@@ -19,8 +19,8 @@ int main (int argc, char *argv[])
 	gagnant(S);
 	
 	
-	libere_murs (S);
-	libere_liste(p);
+	//libere_murs (S);
+	//libere_liste(p);
 	wait_escape();
 	exit (0);
 }

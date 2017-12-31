@@ -11,8 +11,9 @@ SLIDER re_init(SLIDER S){
 
 SLIDER deplace_droite(SLIDER S)
 {
-	int a, tmp, i;//supprimer tmp
+	int a, tmp, i,max;//supprimer tmp
 	a=tmp=S.L+1;
+	max=S.L-1;
 	for (i=0;i<S.n; i++)
     {
 		if (S.m.y[i] == S.y && S.m.x[i] == S.x && S.m.type[i] == 3)
@@ -23,8 +24,8 @@ SLIDER deplace_droite(SLIDER S)
 			tmp=S.m.x[i];
 		if (tmp<a)
 			a=tmp;
-		if (a == S.L + 1)
-			a = S.L - 1;
+		if (a==S.L+1)
+			a=max;
     }
 	if (S.x<S.sx && a > S.sx && S.y == S.sy)
     {
@@ -152,40 +153,30 @@ SLIDER deplace (int f,SLIDER S)
 	return S;
 }
 
-
-
-int sortie(SLIDER S)
-{
-	while(S.x==S.sx&&S.y==S.sy)
-	{
-		return 1;
-	}
-	return 0;
-}
-PILE bouge (SLIDER S,PILE l)//void
+PILE bouge (SLIDER S,PILE mouv)//void
 {
 	char c;
 	int a,f;
 	POINT p;
-	l=push(l,S);//insertion position initiale
+	mouv=push(mouv,S);//insertion position initiale
 	S=re_init(S);
-while (!sortie (S))
+while (!(S.x==S.sx&&S.y==S.sy))
 {
 	a=wait_key_arrow_clic (&c,&f,&p);
 	
 	if (a==EST_FLECHE)
 	{
 		S=deplace(f,S);
-		l=push(l,S);
+		mouv=push(mouv,S);
 	}
     if (a==EST_TOUCHE)
 	{
-		l =retour (l, S, c);
-		S.balle = l->balle;
+		mouv=retour (mouv, S, c);
+		S.balle =mouv->balle;
 		afficher_le_slider(S);
 	}
       
 }
-return l;
+return mouv;
 
 }
