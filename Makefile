@@ -6,13 +6,13 @@ all: slider
 test: slider 
 	./slider fichier1.slider
 ecrire:slider
-	./slider editeur creation.slider
+	./slider -c 8 8 creation.slider
 # Edition de liens
 slider: slider.o lire_ecrire.o afficher.o deplacements.o listes_memo.o 
 	gcc *.o  -o slider -luvsqgraphics `sdl-config --libs` -lm -lSDL_ttf
 
 # Compilation
-slider.o: slider.c mes_types.h lire_ecrire.h afficher.h listes_memo.h editeur.h
+slider.o: slider.c mes_types.h lire_ecrire.h afficher.h listes_memo.h
 	gcc -c -Wall `sdl-config --cflags` slider.c
 
 lire_ecrire.o: lire_ecrire.c mes_types.h

@@ -37,15 +37,13 @@ SLIDER init_slider(char *fic,SLIDER S){
 	fclose (fichier);
 	return S;
 }
-void ecrire_dans_fic(char*fic){
+void ecrire_dans_fic(char*fic ,int L,int H){
 	FILE*fichier;
 	fichier=fopen(fic,"w");
 	int i,var1,var2,var3,var4;
 		
-	printf("largeur et hauteur:");
-	scanf("%d %d",&var1,&var2);
-	printf("taille plateau(%d,%d)\n",var1,var2);
-	fprintf(fichier,"%d %d\n",var1,var2);
+	printf("taille plateau(%d,%d)\n",L,H);
+	fprintf(fichier,"%d %d\n",L,H);
 	
 	printf("position balle en x et y:");
 	scanf("%d %d",&var1,&var2);

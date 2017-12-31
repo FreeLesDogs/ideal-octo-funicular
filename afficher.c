@@ -2,7 +2,7 @@
 
 void initialiser_affichage(SLIDER S) //Initialise la fenetre
 {
-	init_graphics(TAILLE_CASE*S.L+50,TAILLE_CASE*S.H);
+	init_graphics(TAILLE_CASE*S.L,TAILLE_CASE*S.H);
 }
 
 void afficher_quadrillage(SLIDER S) //Affiche le quadrillage
