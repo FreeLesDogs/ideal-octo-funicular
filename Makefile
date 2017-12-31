@@ -5,7 +5,8 @@ all: slider
 #Pour lancer l'executable
 test: slider 
 	./slider fichier1.slider
-
+ecrire:slider
+	./slider creation.slider
 # Edition de liens
 slider: slider.o lire_ecrire.o afficher.o deplacements.o listes_memo.o 
 	gcc *.o  -o slider -luvsqgraphics `sdl-config --libs` -lm -lSDL_ttf

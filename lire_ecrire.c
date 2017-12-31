@@ -40,48 +40,36 @@ SLIDER init_slider(char *fic,SLIDER S){
 void ecrire_dans_fic(char*fic){
 	FILE*fichier;
 	fichier=fopen(fic,"w");
-	int i;
-	int largeur;
-	int hauteur;
-	
-	int pos_balle_x;
-	int pos_balle_y;
-	
-	int pos_sortie_x;
-	int pos_sortie_y;
-	
-	int nb_murs;
-	int pos_murs_x;
-	int pos_murs_y;
-	int types_murs;
-	
+	int i,var1,var2,var3,var4;
+		
 	printf("largeur et hauteur:");
-	scanf("%d %d",&largeur,&hauteur);
-	printf("largeur:%d hauteur:%d\n",largeur,hauteur);
-	fprintf(fichier,"%d %d\n",largeur,hauteur);
+	scanf("%d %d",&var1,&var2);
+	printf("taille plateau(%d,%d)\n",var1,var2);
+	fprintf(fichier,"%d %d\n",var1,var2);
 	
 	printf("position balle en x et y:");
-	scanf("%d %d",&pos_balle_x,&pos_balle_y);
-	printf("position balle:%d %d\n",pos_balle_x,pos_balle_y);
-	fprintf(fichier,"%d %d\n",pos_balle_x,pos_balle_y);
+	scanf("%d %d",&var1,&var2);
+	printf("position balle(%d,%d)\n",var1,var2);
+	fprintf(fichier,"%d %d\n",var1,var2);
 	
 	printf("position sortie en x et y:");
-	scanf("%d %d",&pos_sortie_x,&pos_sortie_y);
-	printf("position sortie:%d %d\n",pos_sortie_x,pos_sortie_y);
-	fprintf(fichier,"%d %d\n",pos_sortie_x,pos_sortie_y);
+	scanf("%d %d",&var1,&var2);
+	printf("position sortie (%d,%d)\n",var1,var2);
+	fprintf(fichier,"%d %d\n",var1,var2);
 	
 	printf("nombre de murs:");
-	scanf("%d",&nb_murs);
-	printf("nombre de murs:%d\n",nb_murs);
-	fprintf(fichier,"%d\n",nb_murs);
+	scanf("%d",&var1);
+	printf("nombre de murs:%d\n",var1);
+	fprintf(fichier,"%d\n",var1);
 	
-	for(i=0;i<nb_murs;i++)
+	for(i=0;i<var1;i++)
 	{
-		printf("position mur n°:%d en x et y et type:",i+1);
-		scanf("%d %d %d",&pos_murs_x,&pos_murs_y,&types_murs);
-		printf("pos x y types murs %d %d %d ",pos_murs_x,pos_murs_y,types_murs);
-		fprintf(fichier,"%d %d %d\n",pos_murs_x,pos_murs_y,types_murs);
+		printf("position mur n°:%d en x et y et type:\n",i+1);
+		scanf("%d %d %d",&var2,&var3,&var4);
+		printf("position (%d,%d)type mur n°%d:%d \n",i,var2,var3,var4);
+		fprintf(fichier,"%d %d %d\n",var2,var3,var4);
 	}
 	fclose(fichier);
 	
 }
+
