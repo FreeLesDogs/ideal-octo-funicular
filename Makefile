@@ -6,7 +6,7 @@ all: slider
 test: slider 
 	./slider fichier1.slider
 ecrire:slider
-	./slider creation.slider
+	./slider editeur creation.slider
 # Edition de liens
 slider: slider.o lire_ecrire.o afficher.o deplacements.o listes_memo.o 
 	gcc *.o  -o slider -luvsqgraphics `sdl-config --libs` -lm -lSDL_ttf
@@ -29,7 +29,7 @@ deplacements.o: deplacements.c mes_types.h afficher.h
 	
 #Pour ouvrir tous les fichiers dans Geany
 editeur:
-	geany Makefile *.c mes_types.h
+	geany Makefile *.c mes_types.h &
 
 # Pour creer le zip 
 zip:

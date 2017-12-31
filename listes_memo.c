@@ -10,7 +10,7 @@ PILE push(PILE l, SLIDER S)	//Ajoute un deplacement dans la liste
   return tmp;
 }
 
-PILE libere_liste (PILE l)		//Vide la liste : libere memoire
+PILE clear(PILE l)		//Vide la liste : libere memoire
 {
   PILE ll;
   while (l != NULL)
