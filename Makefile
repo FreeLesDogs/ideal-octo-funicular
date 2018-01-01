@@ -49,5 +49,5 @@ clean:
 git:
 	make clean
 	git add *
-	git commit 
+	git commit -m "last commit" 
 	git push
