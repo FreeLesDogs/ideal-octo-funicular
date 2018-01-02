@@ -29,7 +29,7 @@ deplacements.o: deplacements.c mes_types.h afficher.h
 	
 #Pour ouvrir tous les fichiers dans Geany
 editeur:
-	geany Makefile *.c mes_types.h &
+	geany Makefile *.c mes_types.h fichier1.slider &
 
 # Pour creer le zip 
 zip:
@@ -49,5 +49,5 @@ clean:
 git:
 	make clean
 	git add *
-	git commit -m "last commit" 
+	git commit  
 	git push

@@ -11,9 +11,8 @@ SLIDER re_init(SLIDER S){
 
 SLIDER deplace_droite(SLIDER S)
 {
-	int a, tmp, i,max;//supprimer tmp
+	int a, tmp, i;//supprimer tmp
 	a=tmp=S.L+1;
-	max=S.L-1;
 	for (i=0;i<S.n; i++)
     {
 		if (S.m.y[i] == S.y && S.m.x[i] == S.x && S.m.type[i] == 3)
@@ -25,7 +24,7 @@ SLIDER deplace_droite(SLIDER S)
 		if (tmp<a)
 			a=tmp;
 		if (a==S.L+1)
-			a=max;
+			a=S.L-1;
     }
 	if (S.x<S.sx && a > S.sx && S.y == S.sy)
     {
