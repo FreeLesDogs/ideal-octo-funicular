@@ -19,6 +19,7 @@ SLIDER lire_murs (FILE*fichier,SLIDER S){
 		fscanf(fichier,"%d %d %d",&S.m.x[i],&S.m.y[i],&S.m.type[i]);
 	}
 	return S;
+
 }
 
 SLIDER init_position_slider(SLIDER S){

@@ -143,7 +143,7 @@ SLIDER deplace (int f,SLIDER S)
 	if(f == FLECHE_GAUCHE)
     S=deplace_gauche(S);
 	if(f == FLECHE_DROITE)
-    S=deplace_droite (S);
+	S=deplace_droite (S);
 	if(f == FLECHE_HAUTE)
     S = deplace_haut (S);
 	if (f == FLECHE_BAS)
