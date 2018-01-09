@@ -33,15 +33,12 @@ int main (int argc, char *argv[])
 	{
 		printf("nom du fichier %s \n",argv[1]);
 		S=init_slider(argv[1],S);
+		intro();
 		afficher_slider(S);
 		p=bouge(S,p);
 		gagnant(S);
 	}
 	
-	
-	
-	//libere_murs (S);
-	//clear(p);
 	wait_escape();
 	exit (0);
 }

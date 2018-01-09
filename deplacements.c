@@ -23,14 +23,15 @@ SLIDER deplace_droite(SLIDER S)
 			tmp=S.m.x[i];
 		if (tmp<a)
 			a=tmp;
-		if (a==S.L+1)
-			a=S.L-1;
+		
     }
+    if (a==S.L+1)
+	a=S.L-1;
 	if (S.x<S.sx && a > S.sx && S.y == S.sy)
     {
 		a = S.sx;
     }
-	S.x=a;
+	//S.x=a;
     a=a*TAILLE_CASE+25;
 	for (i=S.balle.x;i<a;i+=TAILLE_CASE)
     {
@@ -62,7 +63,7 @@ SLIDER deplace_gauche (SLIDER S)
     {
 		a = S.sx;
     }
-	S.x = a;
+	//S.x = a;
 	a = a * TAILLE_CASE + (TAILLE_CASE / 2);
 	for (i = S.balle.x; i > a; i -= TAILLE_CASE)
     {
@@ -95,7 +96,7 @@ SLIDER deplace_haut (SLIDER S)
     {
 		a = S.sy;
     }
-	S.y = a;
+	//S.y = a;
 	a = a * TAILLE_CASE + (TAILLE_CASE / 2);
 	for (i = S.balle.y; i < a; i += TAILLE_CASE)
     {
@@ -127,7 +128,7 @@ SLIDER deplace_bas (SLIDER S)
     {
       a = S.sy;
     }
-    S.y = a;
+   // S.y = a;
   a = a * TAILLE_CASE + (TAILLE_CASE / 2);
   for (i = S.balle.y; i > a; i -= TAILLE_CASE)
     {
