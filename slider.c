@@ -8,7 +8,7 @@
 int main (int argc, char *argv[])
 {
 	printf ("Debut slider\n");
-
+	//SDL_EnableKeyRepeat (0,0);
 	SLIDER S;
 	PILE p;
 	p=NULL;

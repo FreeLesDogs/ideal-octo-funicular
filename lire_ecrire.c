@@ -1,7 +1,7 @@
 #include "mes_types.h"
 #include "afficher.h"
-//faire init apres lire_ecrire
-//void erreur argument
+
+
 SLIDER lire_fichier(FILE*fichier,SLIDER S){
 	fscanf (fichier,"%d %d %d %d %d %d ",&S.L,&S.H,&S.x,&S.y,&S.sx,&S.sy);
 	return S;	
@@ -9,7 +9,6 @@ SLIDER lire_fichier(FILE*fichier,SLIDER S){
 
 SLIDER lire_murs (FILE*fichier,SLIDER S){
 	int i;
-	//fseek();
 	fscanf (fichier,"%d",&S.n);
 	S.m.x=malloc(S.n*sizeof(int));
 	S.m.y=malloc(S.n*sizeof(int));

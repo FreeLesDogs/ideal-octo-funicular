@@ -45,7 +45,7 @@ zip:
 
 clean:
 	rm -f *.o
-	rm -f slider
+	rm -f a.out
 git:
 	make clean
 	git add *

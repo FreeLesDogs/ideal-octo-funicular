@@ -99,9 +99,9 @@ void intro()//message d'acceuil
 	p.y=(HEIGHT/2)-50;
 	aff_pol_centre("cliquez pour jouer",50,p,blanc);
 	p.y=(HEIGHT/2)-130;
-	aff_pol_centre("pour un retour en arriere appuyez sur u",30,p,blanc);
+	aff_pol_centre("pour un retour en arriere appuyez sur Z",30,p,blanc);
 	p.y=(HEIGHT/2)-180;
-	aff_pol_centre("pour recommencer appuyez sur r",30,p,blanc);
+	aff_pol_centre("pour recommencer appuyez sur R",30,p,blanc);
 	wait_clic();
 }
 
