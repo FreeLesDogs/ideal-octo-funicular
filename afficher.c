@@ -67,12 +67,12 @@ void afficher_murs (SLIDER S)//Affiche les murs
     }
 }
 
-void afficher_le_slider (SLIDER S) //Affiche le Slider
+void afficher_le_slider (SLIDER S) //Affiche la balle
 {
   draw_fill_circle (S.balle,30,bleu);
 }
 
-void effacer_le_slider (SLIDER S) //Efface le Slider
+void effacer_le_slider (SLIDER S) //Efface la balle
 {
 	draw_fill_circle (S.balle,30,noir);
 }
@@ -82,22 +82,13 @@ void afficher_sortie (SLIDER S) //Affiche la sortie
 	POINT_D p;
 	p.p1.x=(S.sx*TAILLE_CASE)+5;
 	p.p1.y=(S.sy*TAILLE_CASE)+5;
-	
 	p.p2.x=(S.sx*TAILLE_CASE)+TAILLE_CASE;
 	p.p2.y=(S.sy*TAILLE_CASE)+ TAILLE_CASE;
 	
 	draw_fill_rectangle (p.p1,p.p2,vert);
 }
 
-void gagnant(SLIDER S)//quand on gagne
-{	
-	fill_screen(black);
-	POINT p; 
-	p.x=(S.L*TAILLE_CASE)/2;
-	p.y=(S.H*TAILLE_CASE)/2;
-	aff_pol_centre("GAGNE",100,p,blanc);
-}
-void intro()
+void intro()//message d'acceuil 
 {
 	init_graphics(WIDTH,HEIGHT);
 	fill_screen(rouge);
@@ -105,10 +96,22 @@ void intro()
 	p.x=WIDTH/2;
 	p.y=(HEIGHT/2)+100;
 	aff_pol_centre("SLIDER",200,p,blanc);
-	p.x=(WIDTH)/2;
 	p.y=(HEIGHT/2)-50;
-	aff_pol_centre("cliquez pour jouer",50,p,blanc); //u r
+	aff_pol_centre("cliquez pour jouer",50,p,blanc);
+	p.y=(HEIGHT/2)-130;
+	aff_pol_centre("pour un retour en arriere appuyez sur u",30,p,blanc);
+	p.y=(HEIGHT/2)-180;
+	aff_pol_centre("pour recommencer appuyez sur r",30,p,blanc);
 	wait_clic();
+}
+
+void gagnant(SLIDER S)//quand on gagne
+{	
+	fill_screen(noir);
+	POINT p; 
+	p.x=(S.L*TAILLE_CASE)/2;
+	p.y=(S.H*TAILLE_CASE)/2;
+	aff_pol_centre("GAGNE",100,p,blanc);
 }
 
 void afficher_slider(SLIDER S) //Affiche tout

@@ -1,15 +1,15 @@
 NOM=PROJET_IN301
 
-all: slider
+all: a.out
 
 #Pour lancer l'executable
-test: slider 
-	./slider fichier1.slider
+test: a.out 
+	./a.out fichier1.slider
 ecrire:slider
-	./slider -c 8 8 creation.slider
+	./a.out -c 8 8 creation.slider
 # Edition de liens
-slider: slider.o lire_ecrire.o afficher.o deplacements.o listes_memo.o 
-	gcc *.o  -o slider -luvsqgraphics `sdl-config --libs` -lm -lSDL_ttf
+a.out: slider.o lire_ecrire.o afficher.o deplacements.o listes_memo.o 
+	gcc *.o -luvsqgraphics `sdl-config --libs` -lm -lSDL_ttf
 
 # Compilation
 slider.o: slider.c mes_types.h lire_ecrire.h afficher.h listes_memo.h
