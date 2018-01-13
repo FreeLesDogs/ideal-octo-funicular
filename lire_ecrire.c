@@ -2,12 +2,14 @@
 #include "afficher.h"
 
 
-SLIDER lire_fichier(FILE*fichier,SLIDER S){
+SLIDER lire_fichier(FILE*fichier,SLIDER S)
+{
 	fscanf (fichier,"%d %d %d %d %d %d ",&S.L,&S.H,&S.x,&S.y,&S.sx,&S.sy);
 	return S;	
 }
 
-SLIDER lire_murs (FILE*fichier,SLIDER S){
+SLIDER lire_murs (FILE*fichier,SLIDER S)
+{
 	int i;
 	fscanf (fichier,"%d",&S.n);
 	S.m.x=malloc(S.n*sizeof(int));
@@ -21,14 +23,15 @@ SLIDER lire_murs (FILE*fichier,SLIDER S){
 
 }
 
-SLIDER init_position_slider(SLIDER S){
+SLIDER init_position_slider(SLIDER S)
+{
 	S.balle.x=S.x*TAILLE_CASE+(75/2);
 	S.balle.y=S.y*TAILLE_CASE+(75/2);
 	return S;
 }
 
-SLIDER init_slider(char *fic,SLIDER S){
-	
+SLIDER init_slider(char *fic,SLIDER S)
+{
 	FILE *fichier;
 	fichier=fopen(fic,"r");
 	S=lire_fichier(fichier,S);
@@ -37,7 +40,9 @@ SLIDER init_slider(char *fic,SLIDER S){
 	fclose (fichier);
 	return S;
 }
-void ecrire_dans_fic(char*fic ,int L,int H){
+
+void ecrire_dans_fic(char*fic,int L,int H)
+{
 	FILE*fichier;
 	fichier=fopen(fic,"w");
 	int i,var1,var2,var3,var4;

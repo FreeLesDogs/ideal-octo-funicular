@@ -8,7 +8,6 @@
 int main (int argc, char *argv[])
 {
 	printf ("Debut slider\n");
-	//SDL_EnableKeyRepeat (0,0);
 	SLIDER S;
 	PILE p;
 	p=NULL;
@@ -24,8 +23,9 @@ int main (int argc, char *argv[])
 			printf("nom du fichier %s \n",argv[4]);
 			ecrire_dans_fic(argv[4],atoi(argv[2]),atoi(argv[3]));
 			S=init_slider(argv[4],S);
+			
 			afficher_slider(S);
-			p=bouge(S,p);
+			p=jeu(S,p);
 			gagnant(S);
 		}
 	}
@@ -33,9 +33,9 @@ int main (int argc, char *argv[])
 	{
 		printf("nom du fichier %s \n",argv[1]);
 		S=init_slider(argv[1],S);
-		intro();
+		//intro();
 		afficher_slider(S);
-		p=bouge(S,p);
+		p=jeu(S,p);
 		gagnant(S);
 	}
 	

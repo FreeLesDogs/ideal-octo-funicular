@@ -3,9 +3,9 @@ NOM=PROJET_IN301
 all: a.out
 
 #Pour lancer l'executable
-test: a.out 
+test:a.out 
 	./a.out fichier1.slider
-ecrire:slider
+ecrire:a.out
 	./a.out -c 8 8 creation.slider
 # Edition de liens
 a.out: slider.o lire_ecrire.o afficher.o deplacements.o listes_memo.o 
