@@ -155,7 +155,7 @@ while (!(S.x==S.sx&&S.y==S.sy))
 		S=deplace_gauche(S);
 		else if(f==FLECHE_HAUTE)
 		S=deplace_haut(S);
-		
+	
 		mouv=push(mouv,S);		//insertion nouvelle position
 	}
     else if(a==EST_TOUCHE)
