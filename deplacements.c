@@ -3,8 +3,8 @@
 #include "afficher.h"
 
 SLIDER re_init(SLIDER S){
-	SDL_EnableKeyRepeat (0, SDL_DEFAULT_REPEAT_INTERVAL);
-	S.x=(S.balle.x-25)/TAILLE_CASE;
+	SDL_EnableKeyRepeat (0,0);
+	S.x=(S.balle.x-25)/TAILLE_CASE;//pour que le programme sache à tout moment où est la balle
 	S.y=(S.balle.y-25)/TAILLE_CASE;
 	return S;
 }
@@ -13,7 +13,6 @@ SLIDER deplace_droite(SLIDER S)
 {
 	int a, tmp, i;
 	a=tmp=S.L-1;
-	//a=tmp=S.L+1;
 	for (i=0;i<S.n; i++)
     {
 		if (S.m.y[i]==S.y)
@@ -31,27 +30,19 @@ SLIDER deplace_droite(SLIDER S)
 		if (tmp<a)
 		a=tmp;
 	}
-    /*if (a==S.L+1)
-	a=S.L-1;
-	if (S.x<S.sx && a > S.sx && S.y == S.sy)
-    {
-		a = S.sx;
-    }
-	S.x=a;*/
-    a=a*TAILLE_CASE+25;
+	a=a*TAILLE_CASE+25;
 	for (i=S.balle.x;i<a;i+=TAILLE_CASE)
-    {
+	{
 		effacer_le_slider (S);
 		S.balle.x+=TAILLE_CASE;
 		afficher_le_slider (S);
-    }
+	}
 	return S;
 }
 
 SLIDER deplace_gauche (SLIDER S)
 {
 	int a,tmp,i;
-	//a=tmp=-1;
 	a=tmp=0;
 	for(i=0;i<S.n;i++) 
     {
@@ -70,13 +61,6 @@ SLIDER deplace_gauche (SLIDER S)
 		if (tmp>a)
 		a=tmp;
     }
-	/*if(a==-1)
-    a=0;
-	if (S.x>S.sx && a<S.sx && S.y == S.sy)
-    {
-		a = S.sx;
-    }
-	S.x = a;*/
 	a = a * TAILLE_CASE + (TAILLE_CASE / 2);
 	for (i = S.balle.x; i > a; i -= TAILLE_CASE)
     {
@@ -91,7 +75,6 @@ SLIDER deplace_haut(SLIDER S)
 {
 	int a, tmp, i;
 	a=tmp=S.H-1;
-	//a=tmp=S.H+1;
 	for (i=0;i<S.n;i++)
     {
 		if(S.m.x[i]==S.x)
@@ -109,14 +92,6 @@ SLIDER deplace_haut(SLIDER S)
 		if (tmp < a)
 		a = tmp;
     }
-	/*if (a==S.H+1)
-		a=S.H-1;
-
-	if(S.y<S.sy && a > S.sy && S.x == S.sx)
-    {
-		a = S.sy;
-    }
-	S.y = a;*/
 	a = a * TAILLE_CASE + (TAILLE_CASE / 2);
 	for (i = S.balle.y; i < a; i += TAILLE_CASE)
     {
@@ -131,7 +106,6 @@ SLIDER deplace_bas (SLIDER S)
 {
 	int a, tmp,i;
 	a=tmp=0;
-	//a=tmp=-1;
 	for (i=0;i<S.n;i++)
 	{
 		if(S.m.x[i]==S.x)
@@ -149,13 +123,6 @@ SLIDER deplace_bas (SLIDER S)
 	if(tmp > a)
 	a=tmp;
     }
-	/*if (a ==-1)
-	a=0;
-	if(S.y>S.sy&& a < S.sy && S.x == S.sx)
-    {
-      a = S.sy;
-    }
-    S.y=a;*/
 	a = a * TAILLE_CASE + (TAILLE_CASE / 2);
 	for (i = S.balle.y; i > a; i -= TAILLE_CASE)
 	{
@@ -166,43 +133,42 @@ SLIDER deplace_bas (SLIDER S)
     return S;
 }
 
-SLIDER deplace (int f,SLIDER S)
-{
-	if(f == FLECHE_GAUCHE)
-	S=deplace_gauche(S);
-	if(f == FLECHE_DROITE)
-	S=deplace_droite (S);
-	if(f == FLECHE_HAUTE)
-	S = deplace_haut (S);
-	if (f == FLECHE_BAS)
-	S= deplace_bas (S);
-    S=re_init(S);
-	return S;
-}
-
-PILE jeu(SLIDER S,PILE mouv)//void
+PILE jeu(SLIDER S,PILE mouv)
 {
 	char c;
 	int a,f;
 	POINT p;
-	mouv=push(mouv,S);//insertion position initiale
+	mouv=push(mouv,S);		//insertion position initiale
 	S=re_init(S);
 while (!(S.x==S.sx&&S.y==S.sy))
 {
+	
 	a=wait_key_arrow_clic (&c,&f,&p);
 	
-	if (a==EST_FLECHE)
+	if(a==EST_FLECHE)
 	{
-		S=deplace(f,S);
-		mouv=push(mouv,S);
+		if(f==FLECHE_BAS)
+		S=deplace_bas(S);
+		else if(f==FLECHE_DROITE)
+		S=deplace_droite(S);
+		else if(f==FLECHE_GAUCHE)
+		S=deplace_gauche(S);
+		else if(f==FLECHE_HAUTE)
+		S=deplace_haut(S);
+		
+		mouv=push(mouv,S);		//insertion nouvelle position
 	}
-    if (a==EST_TOUCHE)
+    else if(a==EST_TOUCHE)
 	{
 		mouv=touche(mouv, S, c);
 		S.balle=mouv->balle;
 		afficher_slider(S);
 	}
-      
+	else if(a==EST_CLIC)
+	{
+		
+	}
+	  S=re_init(S);    
 }
 return mouv;
 

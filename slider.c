@@ -33,7 +33,7 @@ int main (int argc, char *argv[])
 	{
 		printf("nom du fichier %s \n",argv[1]);
 		S=init_slider(argv[1],S);
-		//intro();
+		//intro(S);
 		afficher_slider(S);
 		p=jeu(S,p);
 		gagnant(S);

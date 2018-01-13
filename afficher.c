@@ -88,9 +88,9 @@ void afficher_sortie (SLIDER S) //Affiche la sortie
 	draw_fill_rectangle (p.p1,p.p2,vert);
 }
 
-void intro()//message d'acceuil 
+void intro(SLIDER S)//message d'acceuil 
 {
-	init_graphics(WIDTH,HEIGHT);
+	initialiser_affichage(S);
 	fill_screen(rouge);
 	POINT p; 
 	p.x=WIDTH/2;

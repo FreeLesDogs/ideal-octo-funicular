@@ -19,11 +19,11 @@ PILE pop(PILE l)//Suprime le dernier mouvement
 	return l;
 }
 
-PILE retour_debut (PILE l)//revient à la premiere pos
+PILE recommencer(PILE l)//revient à la premiere pos
 {
 	while (l->prec!= NULL)
 	{
-		l = l->prec;
+		l=l->prec;
 	}
 	return l;
 }
@@ -35,15 +35,17 @@ void libere_murs (SLIDER S)
 
 PILE touche(PILE p,SLIDER S,int c)//pour revenir en arriere
 {
-	effacer_le_slider(S);
+	
 	
 	if(p!=NULL&&c=='Z')//d'un mouvement
 	{
+		effacer_le_slider(S);
 		p=pop(p);
 	}
 	if (p!=NULL&&c=='R')//dès le début
 	{
-		p=retour_debut(p);
+		effacer_le_slider(S);
+		p=recommencer(p);
 	}
 	S.balle=p->balle;
 	return p;
