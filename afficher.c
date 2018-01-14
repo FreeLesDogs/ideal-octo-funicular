@@ -107,11 +107,11 @@ void intro(SLIDER S)//message d'acceuil
 
 void gagnant(SLIDER S)//quand on gagne
 {	
-	fill_screen(noir);
+	fill_screen(bleu);
 	POINT p; 
 	p.x=(S.L*TAILLE_CASE)/2;
 	p.y=(S.H*TAILLE_CASE)/2;
-	aff_pol_centre("GAGNE",100,p,blanc);
+	aff_pol_centre("GAGNE",20*S.L,p,blanc);
 }
 
 void afficher_slider(SLIDER S) //Affiche tout

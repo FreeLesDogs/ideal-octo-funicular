@@ -3,7 +3,7 @@
 #include "afficher.h"
 
 SLIDER re_init(SLIDER S){
-	SDL_EnableKeyRepeat (0,0);
+	SDL_EnableKeyRepeat(0,0);		//pour éviter de retaper plusieurs fois
 	S.x=(S.balle.x-25)/TAILLE_CASE;//pour que le programme sache à tout moment où est la balle
 	S.y=(S.balle.y-25)/TAILLE_CASE;
 	return S;
@@ -30,13 +30,16 @@ SLIDER deplace_droite(SLIDER S)
 		if (tmp<a)
 		a=tmp;
 	}
-	a=a*TAILLE_CASE+25;
-	for (i=S.balle.x;i<a;i+=TAILLE_CASE)
+	if(S.x<S.sx&&a>S.sx&&S.y==S.sy)
 	{
-		effacer_le_slider (S);
-		S.balle.x+=TAILLE_CASE;
-		afficher_le_slider (S);
+		a=S.sx;
 	}
+	printf("%d\n",a);
+	S.x=a;
+	effacer_le_slider(S);
+	S.balle.x=S.x*TAILLE_CASE+(75/2);
+	afficher_le_slider(S);
+	
 	return S;
 }
 
@@ -61,14 +64,17 @@ SLIDER deplace_gauche (SLIDER S)
 		if (tmp>a)
 		a=tmp;
     }
-	a = a * TAILLE_CASE + (TAILLE_CASE / 2);
-	for (i = S.balle.x; i > a; i -= TAILLE_CASE)
+    if(S.x>S.sx&&a<S.sx&&S.y==S.sy)//pour que l'on s'arrete à la sortie si elle est entre la balle et un mur
     {
-		effacer_le_slider (S);
-		S.balle.x -= TAILLE_CASE;
-		afficher_le_slider (S);
-    }
-    return S;
+		a=S.sx;
+	}
+	printf("%d\n",a);
+	S.x=a;
+	effacer_le_slider(S);
+	S.balle.x=S.x*TAILLE_CASE+(75/2);
+	afficher_le_slider(S);
+	
+	return S;
 }
 
 SLIDER deplace_haut(SLIDER S)
@@ -92,13 +98,16 @@ SLIDER deplace_haut(SLIDER S)
 		if (tmp < a)
 		a = tmp;
     }
-	a = a * TAILLE_CASE + (TAILLE_CASE / 2);
-	for (i = S.balle.y; i < a; i += TAILLE_CASE)
+    if(S.y<S.sy&&a>S.sy&&S.x==S.sx)
     {
-      effacer_le_slider (S);
-      S.balle.y += TAILLE_CASE;
-      afficher_le_slider (S);
-    }
+		a=S.sy;
+	}
+	printf("%d\n",a);
+	S.y=a;
+	effacer_le_slider(S);
+	S.balle.y=S.y*TAILLE_CASE+(75/2);
+	afficher_le_slider(S);
+
 	return S;
 }
 
@@ -120,17 +129,18 @@ SLIDER deplace_bas (SLIDER S)
 				tmp = S.m.y[i];				
 			}
 		}
-	if(tmp > a)
+	if(tmp>a)
 	a=tmp;
     }
-	a = a * TAILLE_CASE + (TAILLE_CASE / 2);
-	for (i = S.balle.y; i > a; i -= TAILLE_CASE)
-	{
-		effacer_le_slider (S);
-		S.balle.y -= TAILLE_CASE;
-		afficher_le_slider (S);
+    if(S.y>S.sy&&a<S.sy&&S.x==S.sx)
+    {
+		a=S.sy;
 	}
-    return S;
+	S.y=a;
+	effacer_le_slider(S);
+	S.balle.y=S.y*TAILLE_CASE+(75/2);
+	afficher_le_slider(S);
+	return S;
 }
 
 PILE jeu(SLIDER S,PILE mouv)
@@ -140,12 +150,12 @@ PILE jeu(SLIDER S,PILE mouv)
 	POINT p;
 	mouv=push(mouv,S);		//insertion position initiale
 	S=re_init(S);
-while (!(S.x==S.sx&&S.y==S.sy))
+while (!(S.x==S.sx&&S.y==S.sy))//tant que la balle n'est pas sur la sortie
 {
 	
 	a=wait_key_arrow_clic (&c,&f,&p);
 	
-	if(a==EST_FLECHE)
+	if(a==EST_FLECHE)			//en attente de fleches
 	{
 		if(f==FLECHE_BAS)
 		S=deplace_bas(S);
@@ -158,9 +168,10 @@ while (!(S.x==S.sx&&S.y==S.sy))
 	
 		mouv=push(mouv,S);		//insertion nouvelle position
 	}
-    else if(a==EST_TOUCHE)
+    else if(a==EST_TOUCHE)		//en attente de Z ou R
 	{
-		mouv=touche(mouv, S, c);
+		mouv=touche(mouv,S,c);
+		effacer_le_slider(S);
 		S.balle=mouv->balle;
 		afficher_slider(S);
 	}

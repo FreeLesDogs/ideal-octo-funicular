@@ -28,26 +28,18 @@ PILE recommencer(PILE l)//revient à la premiere pos
 	return l;
 }
 
-void libere_murs (SLIDER S)
-{
-
-}
-
-PILE touche(PILE p,SLIDER S,int c)//pour revenir en arriere
+PILE touche(PILE p,SLIDER S,int c)//pour revenir en arriere ...
 {
 	
+	//effacer_le_slider(S);
 	
-	if(p!=NULL&&c=='Z')//d'un mouvement
-	{
-		effacer_le_slider(S);
-		p=pop(p);
-	}
-	if (p!=NULL&&c=='R')//dès le début
-	{
-		effacer_le_slider(S);
-		p=recommencer(p);
-	}
-	S.balle=p->balle;
+	if(p!=NULL&&c=='Z')		//...d'un mouvement et ...
+	p=pop(p);
+	if (p!=NULL&&c=='R')	//...dès le début et ...
+	p=recommencer(p);
+	
+	S.balle=p->balle;		//...on met la nouvelle position dans la pile
+	
 	return p;
 }
 
