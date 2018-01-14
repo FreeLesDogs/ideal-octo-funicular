@@ -2,7 +2,7 @@
 #include "mes_types.h"
 #include "lire_ecrire.h"
 #include "afficher.h"
-#include "listes_memo.h"
+#include "fonction_pile.h"
 #include "deplacements.h"
 
 int main (int argc, char *argv[])
@@ -23,7 +23,7 @@ int main (int argc, char *argv[])
 			printf("nom du fichier %s \n",argv[4]);
 			ecrire_dans_fic(argv[4],atoi(argv[2]),atoi(argv[3]));
 			S=init_slider(argv[4],S);
-			
+			intro(S);
 			afficher_slider(S);
 			p=jeu(S,p);
 			gagnant(S);
@@ -33,7 +33,7 @@ int main (int argc, char *argv[])
 	{
 		printf("nom du fichier %s \n",argv[1]);
 		S=init_slider(argv[1],S);
-		//intro(S);
+		intro(S);
 		afficher_slider(S);
 		p=jeu(S,p);
 		gagnant(S);

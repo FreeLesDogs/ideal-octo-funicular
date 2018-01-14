@@ -93,15 +93,15 @@ void intro(SLIDER S)//message d'acceuil
 	initialiser_affichage(S);
 	fill_screen(rouge);
 	POINT p; 
-	p.x=WIDTH/2;
-	p.y=(HEIGHT/2)+100;
-	aff_pol_centre("SLIDER",200,p,blanc);
-	p.y=(HEIGHT/2)-50;
-	aff_pol_centre("cliquez pour jouer",50,p,blanc);
-	p.y=(HEIGHT/2)-130;
-	aff_pol_centre("pour un retour en arriere appuyez sur Z",30,p,blanc);
-	p.y=(HEIGHT/2)-180;
-	aff_pol_centre("pour recommencer appuyez sur R",30,p,blanc);
+	p.x=S.L*38;
+	p.y=(S.H*50);
+	aff_pol_centre("SLIDER",18*S.L,p,blanc);
+	p.y=(S.H*35);
+	aff_pol_centre("cliquez pour jouer",8*S.L,p,blanc);
+	p.y=(S.H*15);
+	aff_pol_centre("pour un retour en arriere appuyez sur Z",3*S.L,p,blanc);
+	p.y=(S.H*10);
+	aff_pol_centre("pour recommencer appuyez sur R",3*S.L,p,blanc);
 	wait_clic();
 }
 
@@ -112,6 +112,15 @@ void gagnant(SLIDER S)//quand on gagne
 	p.x=(S.L*TAILLE_CASE)/2;
 	p.y=(S.H*TAILLE_CASE)/2;
 	aff_pol_centre("GAGNE",20*S.L,p,blanc);
+}
+
+void quitter(SLIDER S,POINT p)
+{
+	if((S.sx*TAILLE_CASE)+5<p.x&&p.x<(S.sx*TAILLE_CASE)+TAILLE_CASE)
+	{
+		if((S.sy*TAILLE_CASE)+5<p.y&&p.y<(S.sy*TAILLE_CASE)+ TAILLE_CASE)
+		printf("sortie");
+	}
 }
 
 void afficher_slider(SLIDER S) //Affiche tout

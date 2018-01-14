@@ -1,18 +1,18 @@
 NOM=PROJET_IN301
 
-all: a.out
+all:slider
 
 #Pour lancer l'executable
-test:a.out 
-	./a.out fichier1.slider
-ecrire:a.out
-	./a.out -c 8 8 creation.slider
+test:slider 
+	./slider fichier1.slider
+ecrire:slider 
+	./slider -c 8 8 creation.slider
 # Edition de liens
-a.out: slider.o lire_ecrire.o afficher.o deplacements.o listes_memo.o 
-	gcc *.o -luvsqgraphics `sdl-config --libs` -lm -lSDL_ttf
+slider: slider.o lire_ecrire.o afficher.o deplacements.o fonction_pile.o 
+	gcc *.o -o slider -luvsqgraphics `sdl-config --libs` -lm -lSDL_ttf
 
 # Compilation
-slider.o: slider.c mes_types.h lire_ecrire.h afficher.h listes_memo.h
+slider.o: slider.c mes_types.h lire_ecrire.h afficher.h fonction_pile.h
 	gcc -c -Wall `sdl-config --cflags` slider.c
 
 lire_ecrire.o: lire_ecrire.c mes_types.h
@@ -21,8 +21,8 @@ lire_ecrire.o: lire_ecrire.c mes_types.h
 afficher.o: afficher.c mes_types.h
 	gcc -c -Wall `sdl-config --cflags` afficher.c
 
-listes_memo.o: listes_memo.c mes_types.h afficher.h
-	gcc -c -Wall `sdl-config --cflags` listes_memo.c	
+fonction_pile.o: fonction_pile.c mes_types.h afficher.h
+	gcc -c -Wall `sdl-config --cflags` fonction_pile.c	
 
 deplacements.o: deplacements.c mes_types.h afficher.h
 	gcc -c -Wall `sdl-config --cflags` deplacements.c

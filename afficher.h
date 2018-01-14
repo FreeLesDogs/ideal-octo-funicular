@@ -6,5 +6,5 @@ void afficher_quadrillage(SLIDER S);
 void intro(SLIDER S);
 void gagnant(SLIDER S);
 void initialiser_affichage(SLIDER S);
-
+void quitter(SLIDER S,POINT p);
 void afficher_slider(SLIDER S);
