@@ -31,12 +31,19 @@ int main (int argc, char *argv[])
 	}
 	else if (argc==2)
 	{
+		if(strcmp(argv[1],"dir_slider")==0)
+		{
+			printf("dir");
+		}
+		else
+		{		
 		printf("nom du fichier %s \n",argv[1]);
 		S=init_slider(argv[1],S);
 		intro(S);
 		afficher_slider(S);
 		p=jeu(S,p);
 		gagnant(S);
+		}
 	}
 	
 	wait_escape();

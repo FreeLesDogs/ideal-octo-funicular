@@ -3,8 +3,8 @@
 
 SLIDER deplace_droite(SLIDER S)
 {
-	int a,tmp,i;
-	a=tmp=S.L-1;
+	int pos,tmp,i;
+	pos=tmp=S.L-1;
 	for (i=0;i<S.n; i++)
     {
 		if (S.m.y[i]==S.y)
@@ -19,13 +19,13 @@ SLIDER deplace_droite(SLIDER S)
 					tmp=S.m.x[i];
 				}
 			}
-		if (tmp<a)
-		a=tmp;
+		if (tmp<pos)
+		pos=tmp;
 	}
-	if(S.x<S.sx&&a>S.sx&&S.y==S.sy)
-	a=S.sx;
+	if(S.x<S.sx&&pos>S.sx&&S.y==S.sy)
+	pos=S.sx;
 	
-	S.x=a;
+	S.x=pos;
 	effacer_le_slider(S);
 	S.balle.x=S.x*TAILLE_CASE+(75/2);
 	afficher_le_slider(S);
@@ -35,8 +35,8 @@ SLIDER deplace_droite(SLIDER S)
 
 SLIDER deplace_gauche (SLIDER S)
 {
-	int a,tmp,i;
-	a=tmp=0;
+	int pos,tmp,i;
+	pos=tmp=0;
 	for(i=0;i<S.n;i++) 
     {
 		if(S.y==S.m.y[i])
@@ -51,13 +51,13 @@ SLIDER deplace_gauche (SLIDER S)
 					tmp=S.m.x[i]+1;
 				}
 			}
-		if (tmp>a)
-		a=tmp;
+		if (tmp>pos)
+		pos=tmp;
     }
-    if(S.x>S.sx&&a<S.sx&&S.y==S.sy)//pour que l'on s'arrete à la sortie si elle est entre la balle et un mur
-    a=S.sx;
+    if(S.x>S.sx&&pos<S.sx&&S.y==S.sy)//pour que l'on s'arrete à la sortie si elle est entre la balle et un mur
+    pos=S.sx;
 	
-	S.x=a;
+	S.x=pos;
 	effacer_le_slider(S);
 	S.balle.x=S.x*TAILLE_CASE+(75/2);
 	afficher_le_slider(S);
@@ -67,8 +67,8 @@ SLIDER deplace_gauche (SLIDER S)
 
 SLIDER deplace_haut(SLIDER S)
 {
-	int a, tmp, i;
-	a=tmp=S.H-1;
+	int pos, tmp, i;
+	pos=tmp=S.H-1;
 	for (i=0;i<S.n;i++)
     {
 		if(S.m.x[i]==S.x)
@@ -83,13 +83,13 @@ SLIDER deplace_haut(SLIDER S)
 				tmp=S.m.y[i]-1;
 			}
 		}
-		if (tmp < a)
-		a = tmp;
+		if (tmp<pos)
+		pos=tmp;
     }
-    if(S.y<S.sy&&a>S.sy&&S.x==S.sx)
-    a=S.sy;
+    if(S.y<S.sy&&pos>S.sy&&S.x==S.sx)
+    pos=S.sy;
 	
-	S.y=a;
+	S.y=pos;
 	effacer_le_slider(S);
 	S.balle.y=S.y*TAILLE_CASE+(75/2);
 	afficher_le_slider(S);
@@ -99,8 +99,8 @@ SLIDER deplace_haut(SLIDER S)
 
 SLIDER deplace_bas (SLIDER S)
 {
-	int a, tmp,i;
-	a=tmp=0;
+	int pos,tmp,i;
+	pos=tmp=0;
 	for (i=0;i<S.n;i++)
 	{
 		if(S.m.x[i]==S.x)
@@ -115,13 +115,13 @@ SLIDER deplace_bas (SLIDER S)
 				tmp = S.m.y[i];				
 			}
 		}
-	if(tmp>a)
-	a=tmp;
+	if(tmp>pos)
+	pos=tmp;
     }
-    if(S.y>S.sy&&a<S.sy&&S.x==S.sx)
-    a=S.sy;
+    if(S.y>S.sy&&pos<S.sy&&S.x==S.sx)
+    pos=S.sy;
 	
-	S.y=a;
+	S.y=pos;
 	effacer_le_slider(S);
 	S.balle.y=S.y*TAILLE_CASE+(75/2);
 	afficher_le_slider(S);

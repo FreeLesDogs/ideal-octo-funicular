@@ -7,6 +7,8 @@ test:slider
 	./slider fichier1.slider
 ecrire:slider 
 	./slider -c 8 8 creation.slider
+dir:slider
+	./slider dir_slider
 # Edition de liens
 slider: slider.o lire_ecrire.o afficher.o deplacements.o fonction_pile.o 
 	gcc *.o -o slider -luvsqgraphics `sdl-config --libs` -lm -lSDL_ttf
