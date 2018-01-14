@@ -1,4 +1,4 @@
-NOM=PROJET_IN301
+NOM=ABELLI
 
 all:slider
 
@@ -8,7 +8,12 @@ test:slider
 ecrire:slider 
 	./slider -c 8 8 creation.slider
 dir:slider
-	./slider dir_slider
+	./slider dir_slider/1.slider
+	./slider dir_slider/2.slider
+	./slider dir_slider/3.slider
+	./slider dir_slider/4.slider
+	./slider dir_slider/5.slider
+	
 # Edition de liens
 slider: slider.o lire_ecrire.o afficher.o deplacements.o fonction_pile.o 
 	gcc *.o -o slider -luvsqgraphics `sdl-config --libs` -lm -lSDL_ttf
